@@ -1,0 +1,18 @@
+<odoo>
+
+    <record id="type_disease_1" model="osl.hospital.type.disease">
+        <field name="name">Type 01</field>
+        <field name="description">descr. #01</field>
+    </record>
+
+    <record id="type_disease_2" model="osl.hospital.type.disease">
+        <field name="name">Type 02</field>
+        <field name="description">descr. #02</field>
+    </record>
+
+    <record id="type_disease_3" model="osl.hospital.type.disease">
+        <field name="name">Type 03</field>
+        <field name="description">descr. #03</field>
+    </record>
+
+</odoo>

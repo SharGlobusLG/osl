@@ -1,0 +1,8 @@
+Odoo School: Lesson 2-2
+-----------
+HR Hospital
+-----------
+
+Розміщення модуля у вкладеній директорії (наприклад в osl\lesson_2_2\hospital) не працює,
+виникає повідомлення про помилку:
+9127 WARNING odoo odoo.modules.module_graph: module lesson_2_2: not installable, skipped.
