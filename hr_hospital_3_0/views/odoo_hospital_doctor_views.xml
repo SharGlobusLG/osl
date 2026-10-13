@@ -8,7 +8,9 @@
                 <list>
                     <field name="name"/>
                     <field name="description"/>
-                    <field name="osl_doctor_category_id"/>
+                    <field name="doctor_category_id"/>
+                    <field name="user"/>
+                    <field name="mentor"/>
                 </list>
             </field>
         </record>
@@ -24,11 +26,12 @@
                             <group>
                                 <field name="name"/>
                                 <field name="description"/>
+                                <field name="user"/>
                             </group>
                             <group>
-                                <field name="osl_doctor_category_id"/>
-                                <!--field name="osl_doctor_category_id" widget="many2many_tags"
-                                       options="{'color_field': 'color'}"/-->
+                                <field name="doctor_category_id"/>
+                                <field name="is_intern"/>
+                                <field name="mentor"/>
                             </group>
                         </group>
                     </sheet>

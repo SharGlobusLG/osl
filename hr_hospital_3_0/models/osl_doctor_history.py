@@ -1,19 +1,19 @@
 from odoo import api, fields, models
-from odoo.addons.test_convert.tests.test_env import record
 
 
 class OSLDoctorHistory(models.Model):
     _name = 'osl.hospital.doctor.history'
     _description = 'History Doc/Ptient'
+    _rec_names_search = ['patient_id', 'doctor_id']
 
-    osl_patient_id = fields.Many2one(
+    patient_id = fields.Many2one(
         comodel_name='osl.hospital.patient',
         string='Patient',
         required=True,
         ondelete='restrict',
     )
 
-    osl_doctor_id = fields.Many2one(
+    doctor_id = fields.Many2one(
         comodel_name='osl.hospital.doctor',
         string='Doctor',
         required=True,
@@ -48,15 +48,15 @@ class OSLDoctorHistory(models.Model):
                 }
         return {}
 
-    @api.depends('osl_patient_id', 'osl_doctor_id')
+    @api.depends('patient_id', 'doctor_id')
     def _compute_display_name(self):
         for record in self:
             displayName = ''
-            if record.osl_patient_id:
-                displayName += f'{record.osl_patient_id.display_name} - '
-            if record.osl_doctor_id:
-                displayName += f'{record.osl_doctor_id.display_name}'
-            if record.osl_doctor_id.osl_doctor_category_id:
-                displayName += f' ({record.osl_doctor_id.osl_doctor_category_id.display_name})'
+            if record.patient_id:
+                displayName += f'{record.patient_id.display_name} - '
+            if record.doctor_id:
+                displayName += f'{record.doctor_id.display_name}'
+            if record.doctor_id.doctor_category_id:
+                displayName += f' ({record.doctor_id.doctor_category_id.display_name})'
 
-            record.display_name = displayName+' '+ str(record.appointment_date)
+            record.display_name = displayName + ' ' + str(record.appointment_date)

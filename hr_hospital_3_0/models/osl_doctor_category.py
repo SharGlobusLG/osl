@@ -14,13 +14,22 @@ class OSLDoctorCategory(models.Model):
 
     sequence = fields.Integer(string='Sequence')
 
-    osl_doctor_ids = fields.One2many(
+    is_intern = fields.Boolean(
+        string='Is Intern',
+        default=False,
+        copy=False,
+    )
+
+    doctor_ids = fields.One2many(
         comodel_name='osl.hospital.doctor',
-        inverse_name='osl_doctor_category_id',
+        inverse_name='doctor_category_id',
         string='Doctors',
         help='Doctors list',
     )
+
+
     _name_unique = models.Constraint(
         definition='UNIQUE(name)',
         message='A doctor category with this name already exists.',
     )
+

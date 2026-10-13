@@ -7,6 +7,7 @@
             <field name="arch" type="xml">
                 <list>
                     <field name="name"/>
+                    <field name="is_intern"/>
                 </list>
             </field>
         </record>
@@ -21,9 +22,12 @@
                         <group>
                             <group>
                                 <field name="name"/>
+                                <field name="is_intern"/>
+                                <field name="sequence"/>
                             </group>
+
                             <group>
-                                <field name="osl_doctor_ids">
+                                <field name="doctor_ids">
                                     <list>
                                         <field name="name"/>
                                     </list>
@@ -36,7 +40,7 @@
         </record>
 
         <record id="action_osl_hospital_doctor_category_window" model="ir.actions.act_window">
-            <field name="name">Doctor Category Win</field>
+            <field name="name">Doctor Category</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">osl.hospital.doctor.category</field>
             <field name="view_mode">list,form</field>
@@ -45,7 +49,7 @@
         <menuitem id="osl_hospital_menu_doctor_category"
                   action="action_osl_hospital_doctor_category_window"
                   parent="odoo_hospital_menu_catalog"
-                  name="Doctor's Catergories" sequence="200"/>
+                  name="Doctor Category" sequence="200"/>
 
     </data>
 </odoo>

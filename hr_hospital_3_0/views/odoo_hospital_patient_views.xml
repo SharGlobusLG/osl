@@ -8,6 +8,11 @@
                 <list>
                     <field name="name"/>
                     <field name="description"/>
+                    <field name="insurance_policy_number"/>
+                    <field name="blood_type"/>
+                    <field name="gender"/>
+                    <field name="birth_date"/>
+                    <field name="age"/>
                 </list>
             </field>
         </record>
@@ -19,16 +24,18 @@
                 <form>
                     <header></header>
                     <sheet>
-                        <group>
+                        <group col="1">
                             <group>
                                 <field name="name"/>
                                 <field name="description"/>
+                                <field name="insurance_policy_number"/>
                             </group>
-                            <!--group>
-                                <field name="res_partner_id"/>
-                                <field name="res_partner_ids" widget="many2many_tags"
-                                       options="{'color_field': 'color'}"/>
-                            </group-->
+                            <group>
+                                <field name="blood_type"/>
+                                <field name="gender"/>
+                                <field name="birth_date"/>
+                                <field name="age"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>

@@ -1,7 +1,7 @@
 from odoo import fields, models
 
 
-class OSLDoctor(models.Model):
+class OSLTypeDisease(models.Model):
     _name = 'osl.hospital.type.disease'
     _description = 'Type disease'
 
