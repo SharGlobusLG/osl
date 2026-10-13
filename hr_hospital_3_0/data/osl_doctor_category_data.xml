@@ -1,0 +1,18 @@
+<odoo>
+
+    <record id="doctor_category_1" model="osl.hospital.doctor.category">
+        <field name="name">Лікар-інтерн</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="doctor_category_2" model="osl.hospital.doctor.category">
+        <field name="name">Лікар-спеціаліст</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="doctor_category_3" model="osl.hospital.doctor.category">
+        <field name="name">Лікар вищої категорії</field>
+        <field name="sequence">3</field>
+    </record>
+
+</odoo>
