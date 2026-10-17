@@ -1,19 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
 
-        <record id="doctor_01" model="osl.hospital.doctor">
-            <field name="name">Doctor 01</field>
-            <field name="description">Description doctor 1</field>
+        <record id="1" model="osl.hospital.doctor">
+            <field name="name">Dr. House M.D.</field>
+            <field name="description">Doctor House M.D.</field>
         </record>
 
-        <record id="doctor_02" model="osl.hospital.doctor">
-            <field name="name">Doctor 02</field>
-            <field name="description">Description doctor 2</field>
+        <record id="2" model="osl.hospital.doctor">
+            <field name="name">Dr. Wilson</field>
+            <field name="description">Doctor James Wilson</field>
         </record>
 
-        <record id="doctor_03" model="osl.hospital.doctor">
-            <field name="name">Doctor 03</field>
-            <field name="description">Description doctor 3</field>
+        <record id="3" model="osl.hospital.doctor">
+            <field name="name">Dr. Cameron</field>
+            <field name="description">Doctor Allison Cameron</field>
+        </record>
+
+        <record id="4" model="osl.hospital.doctor">
+            <field name="name">Dr. Chase</field>
+            <field name="description">Doctor Robert Chase</field>
         </record>
 
     </data>

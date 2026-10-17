@@ -6,8 +6,13 @@
             <field name="model">osl.hospital.appointment</field>
             <field name="arch" type="xml">
                 <list>
-                    <field name="name"/>
-                    <field name="description"/>
+                    <field name="display_name"/>
+                    <field name="state"/>
+                    <field name="scheduled_date"/>
+                    <field name="actual_date"/>
+                    <field name="patient_id"/>
+                    <field name="doctor_id"/>
+                    <field name="disease_id"/>
                 </list>
             </field>
         </record>
@@ -19,16 +24,18 @@
                 <form>
                     <header></header>
                     <sheet>
-                        <group>
-                            <group>
-                                <field name="name"/>
-                                <field name="description"/>
+                        <group col="2">
+                            <group string="Primary Details">
+                                <field name="state"/>
+                                <field name="scheduled_date"/>
+                                <field name="actual_date"/>
+                                <field name="patient_id"/>
+                                <field name="doctor_id"/>
+                                <field name="disease_id"/>
                             </group>
-                            <!--group>
-                                <field name="res_partner_id"/>
-                                <field name="res_partner_ids" widget="many2many_tags"
-                                       options="{'color_field': 'color'}"/>
-                            </group-->
+                            <group string="Summary">
+                                <field name="summary" options="{'codeview': true}" class="oe-bordered-editor"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>

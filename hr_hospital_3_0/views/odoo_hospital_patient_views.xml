@@ -36,6 +36,9 @@
                                 <field name="birth_date"/>
                                 <field name="age"/>
                             </group>
+                            <group>
+                                <field name="history_ids"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>

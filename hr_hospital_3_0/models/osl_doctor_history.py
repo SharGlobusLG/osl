@@ -3,7 +3,7 @@ from odoo import api, fields, models
 
 class OSLDoctorHistory(models.Model):
     _name = 'osl.hospital.doctor.history'
-    _description = 'History Doc/Ptient'
+    _description = 'Історія персональних лікарів'
     _rec_names_search = ['patient_id', 'doctor_id']
 
     patient_id = fields.Many2one(

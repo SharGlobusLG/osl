@@ -36,9 +36,10 @@
     ],
     # only loaded in demonstration mode
     'demo': [
+        'demo/osl_type_disease_demo.xml',
         'demo/osl_doctor_demo.xml',
         'demo/osl_patient_demo.xml',
-
+        'demo/osl_appointment_demo.xml',
     ],
 
     'installable': True,

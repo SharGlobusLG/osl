@@ -1,4 +1,5 @@
-from odoo import fields, models, api
+from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class OSLDoctor(models.Model):
@@ -22,7 +23,7 @@ class OSLDoctor(models.Model):
 
     is_intern = fields.Boolean(
         string='Intern',
-        compute='_compute_is_intern',
+        compute='_compute_is_intern_mentor',
         store=True,
     )
 
@@ -30,15 +31,23 @@ class OSLDoctor(models.Model):
         comodel_name='osl.hospital.doctor',
         string='Mentor',
         ondelete='restrict',
+        # compute='_compute_is_intern_mentor',
+        domain=lambda self: [('is_intern', '=', False), ('id', '!=', self.id)],
         copy=False,
     )
 
-
     @api.depends('doctor_category_id')
-    def _compute_is_intern(self):
+    def _compute_is_intern_mentor(self):
         for record in self:
             if record.doctor_category_id:
-                record.is_intern =  record.doctor_category_id.is_intern
+                record.is_intern = record.doctor_category_id.is_intern
+                if not record.doctor_category_id.is_intern:
+                    record.mentor = None
 
-
-
+    @api.constrains('mentor')
+    def _check_mentor(self):
+        for record in self:
+            if record.mentor.is_intern:
+                raise ValidationError("Не можна обрати ментором лікаря, який сам є інтерном")
+            if record.mentor.id == record.id:
+                raise ValidationError("Не можна обрати ментором себє")

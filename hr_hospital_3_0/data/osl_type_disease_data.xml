@@ -1,18 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-    <record id="type_disease_1" model="osl.hospital.type.disease">
-        <field name="name">Type 01</field>
-        <field name="description">descr. #01</field>
+    <record id="21" model="osl.hospital.type.disease">
+        <field name="name">Хвороба тулуба</field>
+        <field name="description">Хвороба тулуба</field>
     </record>
-
-    <record id="type_disease_2" model="osl.hospital.type.disease">
-        <field name="name">Type 02</field>
-        <field name="description">descr. #02</field>
+    <record id="22" model="osl.hospital.type.disease">
+        <field name="name">Хвороба ноги</field>
+        <field name="description">Хвора ноги</field>
+        <field name="parent_id" ref="21"/>
     </record>
-
-    <record id="type_disease_3" model="osl.hospital.type.disease">
-        <field name="name">Type 03</field>
-        <field name="description">descr. #03</field>
+    <record id="23" model="osl.hospital.type.disease">
+        <field name="name">Хвороба голови</field>
+        <field name="description">Хвороба голови</field>
+        <field name="parent_id" ref="21"/>
     </record>
-
+    <record id="24" model="osl.hospital.type.disease">
+        <field name="name">Хвороба руки</field>
+        <field name="description">Хвороба руки</field>
+        <field name="parent_id" ref="21"/>
+    </record>
+    <record id="25" model="osl.hospital.type.disease">
+        <field name="name">Хвороба долоні</field>
+        <field name="description">Хвороба долоні</field>
+        <field name="parent_id" ref="24"/>
+    </record>
+    <record id="26" model="osl.hospital.type.disease">
+        <field name="name">Хвороба пальця</field>
+        <field name="description">Хвороба пальця</field>
+        <field name="parent_id" ref="25"/>
+    </record>
 </odoo>

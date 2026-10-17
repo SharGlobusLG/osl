@@ -27,9 +27,7 @@ class OSLDoctorCategory(models.Model):
         help='Doctors list',
     )
 
-
     _name_unique = models.Constraint(
         definition='UNIQUE(name)',
         message='A doctor category with this name already exists.',
     )
-
