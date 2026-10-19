@@ -11,6 +11,10 @@
                     <field name="doctor_category_id"/>
                     <field name="user"/>
                     <field name="mentor"/>
+                    <field name="blood_type"/>
+                    <field name="gender"/>
+                    <field name="birth_date"/>
+                    <field name="age"/>
                 </list>
             </field>
         </record>
@@ -32,6 +36,12 @@
                                 <field name="doctor_category_id"/>
                                 <field name="is_intern"/>
                                 <field name="mentor" readonly="not is_intern"/>
+                            </group>
+                            <group>
+                                <field name="blood_type"/>
+                                <field name="gender"/>
+                                <field name="birth_date"/>
+                                <field name="age"/>
                             </group>
                         </group>
                     </sheet>

@@ -4,7 +4,7 @@ from odoo.exceptions import ValidationError
 
 class OSLDoctor(models.Model):
     _name = 'osl.hospital.doctor'
-    #_inherit = 'osl.hospital.medic.info'
+    _inherit = 'osl.hospital.medic.info'
     _description = 'Doctor'
     _rec_name = 'name'
 
