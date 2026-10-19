@@ -8,6 +8,11 @@ class OSLPatient(models.Model):
 
     name = fields.Char()
 
+    doctor_id = fields.Many2one(
+        comodel_name='osl.hospital.doctor',
+        string='Doctor',
+    )
+
     description = fields.Text()
 
     insurance_policy_number = fields.Char(size=20)
@@ -18,3 +23,6 @@ class OSLPatient(models.Model):
         string='History Doc/Patient',
         help='History Doc/Patient',
     )
+
+
+    #osl.hospital.patient

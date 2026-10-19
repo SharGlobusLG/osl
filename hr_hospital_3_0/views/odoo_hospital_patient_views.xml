@@ -8,6 +8,7 @@
                 <list>
                     <field name="name"/>
                     <field name="description"/>
+                    <field name="doctor_id"/>
                     <field name="insurance_policy_number"/>
                     <field name="blood_type"/>
                     <field name="gender"/>
@@ -28,6 +29,7 @@
                             <group>
                                 <field name="name"/>
                                 <field name="description"/>
+                                <field name="doctor_id"/>
                                 <field name="insurance_policy_number"/>
                             </group>
                             <group>

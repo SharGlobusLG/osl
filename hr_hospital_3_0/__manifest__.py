@@ -31,6 +31,8 @@
         'views/odoo_hospital_appointment_views.xml',
         'views/odoo_hospital_doctor_history_views.xml',
 
+        'wizard/osl_hospotal_set_doctor_wizard_view.xml',
+
         'data/osl_type_disease_data.xml',
         'data/osl_doctor_category_data.xml'
     ],

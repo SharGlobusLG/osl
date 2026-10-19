@@ -1,0 +1,33 @@
+<odoo>
+    <record id="osl_hospital_set_doctor_wizard_form" model="ir.ui.view">
+        <field name="name">mass.reassign.doctor.wizard.form</field>
+        <field name="model">mass.reassign.doctor.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="patient_ids" widget="many2many_tags"/>
+                    <field name="doctor_id"/>
+                </group>
+                <footer>
+                    <button name="action_set_doctor"
+                            type="object"
+                            string="Confirm (set doctor)"
+                            class="btn-primary"/>
+                    <button special="cancel"
+                            string="Cancel"
+                            class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="osl_hospital_set_doctor_wizard" model="ir.actions.act_window">
+        <field name="name">Set doctor for patients list</field>
+        <field name="res_model">mass.reassign.doctor.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <!--field name="binding_model_id" ref="model_osl_library_book"/-->
+        <field name="binding_model_id" ref="model_osl_hospital_patient"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>
