@@ -1,8 +1,9 @@
 import logging
 
-from odoo import fields, models, api
+from odoo import api, fields, models
 from odoo.exceptions import UserError
-from ..constants import *
+
+from ..constants import APPOINTMENT_STATES, COMPLETED
 
 _logger = logging.getLogger(__name__)
 
@@ -10,8 +11,8 @@ class OSLAppointment(models.Model):
     _name = 'osl.hospital.appointment'
     _description = 'Appointment'
 
-    #name = fields.Char()
-    #description = fields.Text()
+    # name = fields.Char()
+    # description = fields.Text()
 
     state = fields.Selection(
         selection=APPOINTMENT_STATES,
@@ -59,7 +60,7 @@ class OSLAppointment(models.Model):
             )
         return super().unlink()
 
-    @api.onchange('actual_date','doctor_id')
+    @api.onchange('actual_date', 'doctor_id')
     def _onchange_scheduled_actual_date_doctor(self):
         for rec in self:
             if rec._origin.state == COMPLETED:
@@ -72,7 +73,6 @@ class OSLAppointment(models.Model):
                     }
                 }
         return {}
-
 
     @api.depends('patient_id', 'doctor_id')
     def _compute_display_name(self):

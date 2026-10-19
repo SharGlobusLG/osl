@@ -6,6 +6,7 @@
             <field name="model">osl.hospital.doctor.history</field>
             <field name="arch" type="xml">
                 <list>
+                    <field name="display_name"/>
                     <field name="patient_id"/>
                     <field name="doctor_id"/>
                     <field name="appointment_date"/>

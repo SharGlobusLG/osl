@@ -6,6 +6,7 @@
             <field name="model">osl.hospital.type.disease</field>
             <field name="arch" type="xml">
                 <list>
+                    <field name="display_name"/>
                     <field name="parent_id"/>
                     <field name="name"/>
                     <field name="description"/>

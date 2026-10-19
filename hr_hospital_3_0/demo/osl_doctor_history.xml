@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="51" model="osl.hospital.doctor.history">
+            <field name="patient_id" ref="11"/>
+            <field name="doctor_id" ref="1"/>
+            <field name="appointment_date">2026-11-10</field>
+            <field name="exchange_date">2026-11-12</field>
+            <field name="active">False</field>
+        </record>
+        <record id="52" model="osl.hospital.doctor.history">
+            <field name="patient_id" ref="11"/>
+            <field name="doctor_id" ref="2"/>
+            <field name="appointment_date">2026-11-13</field>
+            <field name="exchange_date">2026-11-15</field>
+            <field name="active">False</field>
+        </record>
+        <record id="53" model="osl.hospital.doctor.history">
+            <field name="patient_id" ref="11"/>
+            <field name="doctor_id" ref="3"/>
+            <field name="appointment_date">2026-11-16</field>
+            <field name="active">True</field>
+        </record>
+        <record id="54" model="osl.hospital.doctor.history">
+            <field name="patient_id" ref="12"/>
+            <field name="doctor_id" ref="11"/>
+            <field name="appointment_date">2026-11-20</field>
+            <field name="exchange_date">2026-11-20</field>
+            <field name="active">True</field>
+        </record>
+
+
+    </data>
+</odoo>

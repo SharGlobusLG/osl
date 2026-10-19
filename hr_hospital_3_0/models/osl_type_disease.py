@@ -1,5 +1,5 @@
-from odoo import fields, models, api
-from odoo.exceptions import ValidationError, UserError
+from odoo import api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 
 class OSLTypeDisease(models.Model):
@@ -32,11 +32,12 @@ class OSLTypeDisease(models.Model):
 
     @api.constrains('parent_id')
     def _check_parent_recursion(self):
-        if not self._check_recursion():
+        if self._has_cycle():
             raise ValidationError(
                 "Error: you cannot create a recursive hierarchy. "
                   "A disease cannot be its own parent or ancestor."
             )
+
     @api.onchange('parent_id')
     def _onchange_parent_id(self):
         if self.parent_id and self.parent_id.id == self.id:
@@ -47,6 +48,7 @@ class OSLTypeDisease(models.Model):
                     'message': 'A disease cannot be its own parent.',
                 }
             }
+        return {}
 
     display_name = fields.Char(
         compute='_compute_display_name',
@@ -62,7 +64,6 @@ class OSLTypeDisease(models.Model):
                 record.display_name = f"{record.parent_id.display_name} / {record.name}"
             else:
                 record.display_name = record.name or ''
-
 
     def unlink(self):
         for record in self:

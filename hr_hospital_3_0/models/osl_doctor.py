@@ -32,11 +32,16 @@ class OSLDoctor(models.Model):
         comodel_name='osl.hospital.doctor',
         string='Mentor',
         ondelete='restrict',
-        # compute='_compute_is_intern_mentor',
         domain=lambda self: [('is_intern', '=', False), ('id', '!=', self.id)],
         copy=False,
     )
 
+    '''
+        Ознака того, що кваліфікація є Інтерн, міститься в самій таблиці "osl.hospital.doctor.category"
+        Це рішення дозволяє мати кілька категорій, які можуть бути Інтерном. І дає більше свободи користувачеві.
+        При цьому зберігаючи надійність перевірки.
+        Але треба обережно змінювати існуючі категорії.
+    '''
     @api.depends('doctor_category_id')
     def _compute_is_intern_mentor(self):
         for record in self:

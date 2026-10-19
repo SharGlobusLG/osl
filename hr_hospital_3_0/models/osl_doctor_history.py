@@ -6,6 +6,8 @@ class OSLDoctorHistory(models.Model):
     _description = 'Історія персональних лікарів'
     _rec_names_search = ['patient_id', 'doctor_id']
 
+    display_name = fields.Char(compute='_compute_display_name', store=False)
+
     patient_id = fields.Many2one(
         comodel_name='osl.hospital.patient',
         string='Patient',
@@ -48,7 +50,7 @@ class OSLDoctorHistory(models.Model):
                 }
         return {}
 
-    @api.depends('patient_id', 'doctor_id')
+    @api.depends('patient_id', 'doctor_id', 'appointment_date')
     def _compute_display_name(self):
         for record in self:
             displayName = ''

@@ -1,6 +1,6 @@
 import logging
 
-from odoo import models, fields, api
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
@@ -25,7 +25,7 @@ class OSLSetDoctorWizard(models.TransientModel):
         self.ensure_one()
         if not self.doctor_id:
             raise UserError("Please select doctor")
-        #self.osl_book_id.reader_ids |= self.res_partner_ids
+        # self.osl_book_id.reader_ids |= self.res_partner_ids
         return {'type': 'ir.actions.act_window_close'}
 
     @api.model

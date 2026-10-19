@@ -32,6 +32,7 @@
         'views/odoo_hospital_doctor_history_views.xml',
 
         'wizard/osl_hospotal_set_doctor_wizard_view.xml',
+        'wizard/osl_hospital_visit_report_wizard_view.xml',
 
         'data/osl_type_disease_data.xml',
         'data/osl_doctor_category_data.xml'
@@ -42,6 +43,7 @@
         'demo/osl_doctor_demo.xml',
         'demo/osl_patient_demo.xml',
         'demo/osl_appointment_demo.xml',
+        'demo/osl_doctor_history.xml',
     ],
 
     'installable': True,

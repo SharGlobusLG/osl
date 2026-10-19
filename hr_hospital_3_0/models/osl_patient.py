@@ -24,5 +24,4 @@ class OSLPatient(models.Model):
         help='History Doc/Patient',
     )
 
-
-    #osl.hospital.patient
+    # osl.hospital.patient
