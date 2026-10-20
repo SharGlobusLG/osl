@@ -24,7 +24,7 @@
         </record>
         <record id="54" model="osl.hospital.doctor.history">
             <field name="patient_id" ref="12"/>
-            <field name="doctor_id" ref="11"/>
+            <field name="doctor_id" ref="4"/>
             <field name="appointment_date">2026-11-20</field>
             <field name="exchange_date">2026-11-20</field>
             <field name="active">True</field>

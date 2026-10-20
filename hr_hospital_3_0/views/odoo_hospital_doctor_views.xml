@@ -35,7 +35,7 @@
                             <group>
                                 <field name="doctor_category_id"/>
                                 <field name="is_intern"/>
-                                <field name="mentor" readonly="not is_intern"/>
+                                <field name="mentor" readonly="not is_intern" invisible="not is_intern"/>
                             </group>
                             <group>
                                 <field name="blood_type"/>

@@ -7,6 +7,8 @@ from ..constants import APPOINTMENT_STATES, COMPLETED
 
 _logger = logging.getLogger(__name__)
 
+APPOINTMENT_DONE = 'Appointment already done'
+
 class OSLAppointment(models.Model):
     _name = 'osl.hospital.appointment'
     _description = 'Appointment'
@@ -49,12 +51,20 @@ class OSLAppointment(models.Model):
     )
 
     def write(self, vals):
+        for rec in self:
+            if rec._origin.state == COMPLETED and ('scheduled_date' in vals or 'doctor_id' in vals):
+                raise UserError(self.env._(APPOINTMENT_DONE))
+
         if 'state' in vals and vals['state'] == COMPLETED:
-            vals['actual_date'] = fields.Datetime.now()
+            if self._origin.state == COMPLETED and ('scheduled_date' in vals or 'doctor_id' in vals):
+                vals['actual_date'] = fields.Datetime.now()
+
         return super().write(vals)
 
     def unlink(self):
         if any(rec._origin.state == COMPLETED for rec in self):
+            if self.env.context.get('_force_unlink'):
+                return super().unlink()
             raise UserError(
                 "Cannot delete a finished record."
             )
@@ -68,7 +78,7 @@ class OSLAppointment(models.Model):
                 rec.doctor_id = rec._origin.doctor_id
                 return {
                     'warning': {
-                        'title': "Appointment already done",
+                        'title': APPOINTMENT_DONE,
                         'message': "Візит вже відбувся.",
                     }
                 }
