@@ -21,11 +21,16 @@ class OSLSetDoctorWizard(models.TransientModel):
         required=True,
     )
 
+    exchange_date = fields.Date(
+        string='Doctor Exchange Date',
+        required=True,
+        default=fields.Date.today(),
+    )
+
     def action_confirm(self):
         self.ensure_one()
         if not self.doctor_id:
             raise UserError("Please select doctor")
-        # self.osl_book_id.reader_ids |= self.res_partner_ids
         return {'type': 'ir.actions.act_window_close'}
 
     @api.model
@@ -45,5 +50,21 @@ class OSLSetDoctorWizard(models.TransientModel):
 
     def action_set_doctor(self):
         for patient in self.patient_ids:
+            history = self.env['osl.hospital.doctor.history'].search([
+                ('patient_id', '=', patient.id),
+                ('active', '=', True),
+            ])
+
+            history.write({
+                'active': False,
+                'exchange_date': self.exchange_date,
+            })
+
             patient.doctor_id = self.doctor_id
+            self.env['osl.hospital.doctor.history'].create({
+                'patient_id': patient.id,
+                'doctor_id': self.doctor_id.id,
+                'set_date': self.exchange_date,
+            })
+
         return {'type': 'ir.actions.act_window_close'}

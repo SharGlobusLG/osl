@@ -22,7 +22,7 @@ class OSLDoctorHistory(models.Model):
         ondelete='restrict',
     )
 
-    appointment_date = fields.Date(
+    set_date = fields.Date(
         string='Appointment Date',
         required=True,
         default=fields.Date.today,
@@ -37,10 +37,10 @@ class OSLDoctorHistory(models.Model):
         default=True
     )
 
-    @api.onchange('appointment_date', 'exchange_date')
-    def _onchange_appointment_date_exchange_date(self):
+    @api.onchange('set_date', 'exchange_date')
+    def _onchange_set_date_exchange_date(self):
         for rec in self:
-            if rec.appointment_date and rec.exchange_date and (rec.exchange_date < rec.appointment_date):
+            if rec.set_date and rec.exchange_date and (rec.exchange_date < rec.set_date):
                 rec.exchange_date = None
                 return {
                     'warning': {
@@ -50,7 +50,7 @@ class OSLDoctorHistory(models.Model):
                 }
         return {}
 
-    @api.depends('patient_id', 'doctor_id', 'appointment_date')
+    @api.depends('patient_id', 'doctor_id', 'set_date')
     def _compute_display_name(self):
         for record in self:
             displayName = ''
@@ -61,4 +61,4 @@ class OSLDoctorHistory(models.Model):
             if record.doctor_id.doctor_category_id:
                 displayName += f' ({record.doctor_id.doctor_category_id.display_name})'
 
-            record.display_name = displayName + ' ' + str(record.appointment_date)
+            record.display_name = displayName + ' ' + str(record.set_date)

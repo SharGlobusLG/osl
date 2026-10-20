@@ -9,7 +9,7 @@
                     <field name="display_name"/>
                     <field name="patient_id"/>
                     <field name="doctor_id"/>
-                    <field name="appointment_date"/>
+                    <field name="set_date"/>
                     <field name="exchange_date"/>
                 </list>
             </field>
@@ -25,7 +25,7 @@
                             <group>
                                 <field name="patient_id"/>
                                 <field name="doctor_id"/>
-                                <field name="appointment_date"/>
+                                <field name="set_date"/>
                                 <field name="exchange_date"/>
                             </group>
                         </group>
