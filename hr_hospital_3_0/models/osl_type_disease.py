@@ -28,7 +28,7 @@ class OSLTypeDisease(models.Model):
         inverse_name='parent_id',
         string='Child Diseases',
     )
-    parent_path = fields.Char(index=True, unaccent=False)
+    parent_path = fields.Char(index=True)
 
     @api.constrains('parent_id')
     def _check_parent_recursion(self):
