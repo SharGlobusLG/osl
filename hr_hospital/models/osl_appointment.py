@@ -47,7 +47,8 @@ class OSLAppointment(models.Model):
 
     disease_id = fields.Many2one(
         string='Disease',
-        comodel_name='osl.hospital.type.disease'
+        comodel_name='osl.hospital.type.disease',
+        ondelete='set null',
     )
 
     def write(self, vals):
@@ -97,3 +98,14 @@ class OSLAppointment(models.Model):
                 displayName += f'{record.scheduled_date}'
 
             record.display_name = displayName
+
+    def show_disease_like_this(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Така сама хвороба',
+            'res_model': 'osl.hospital.appointment',
+            'view_mode': 'list',
+            'domain': [("disease_id","=",self.disease_id.id)],
+            'target': 'current',
+        }

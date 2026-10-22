@@ -22,11 +22,21 @@
             <field name="model">osl.hospital.appointment</field>
             <field name="arch" type="xml">
                 <form>
-                    <header></header>
+                    <header>
+                        <button name="show_disease_like_this"
+                                type="object"
+                                string="Show Disease Like This"
+                                class="btn-info"
+                                icon="oi-odoo-list"/>
+                        <field name="state"
+                               widget="statusbar"
+                               statusbar_visible="scheduled,completed,cancelled"
+                               options="{'clickable': '1'}"/>
+                    </header>
+
                     <sheet>
                         <group col="2">
                             <group string="Primary Details">
-                                <field name="state"/>
                                 <field name="scheduled_date"/>
                                 <field name="actual_date"/>
                                 <field name="patient_id"/>

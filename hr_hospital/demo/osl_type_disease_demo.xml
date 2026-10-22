@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-    </data>
+    <record id="21" model="osl.hospital.type.disease">
+        <field name="name">Хвороба тулуба</field>
+        <field name="description">Хвороба тулуба</field>
+    </record>
+    <record id="22" model="osl.hospital.type.disease">
+        <field name="name">Хвороба ноги</field>
+        <field name="description">Хвора ноги</field>
+        <field name="parent_id" ref="21"/>
+    </record>
+    <record id="23" model="osl.hospital.type.disease">
+        <field name="name">Хвороба голови</field>
+        <field name="description">Хвороба голови</field>
+        <field name="parent_id" ref="21"/>
+    </record>
+    <record id="24" model="osl.hospital.type.disease">
+        <field name="name">Хвороба руки</field>
+        <field name="description">Хвороба руки</field>
+        <field name="parent_id" ref="21"/>
+    </record>
+    <record id="25" model="osl.hospital.type.disease">
+        <field name="name">Хвороба долоні</field>
+        <field name="description">Хвороба долоні</field>
+        <field name="parent_id" ref="24"/>
+    </record>
+    <record id="26" model="osl.hospital.type.disease">
+        <field name="name">Хвороба пальця</field>
+        <field name="description">Хвороба пальця</field>
+        <field name="parent_id" ref="25"/>
+    </record>
 </odoo>
