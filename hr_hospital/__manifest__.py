@@ -1,10 +1,10 @@
 {
-    'name': "HR Hospital ( Lesson 3.0 )",
+    'name': "HR Hospital ( Lesson 4.0 )",
     'sequence': -1000000,
 
-    'summary': 'Odoo Scholl Lesson 3.0 - Hr Hospital',
+    'summary': 'Odoo Scholl Lesson 4.0 - Hr Hospital',
 
-    'description': 'Odoo Scholl Lesson 3.0 - Hr Hospital',
+    'description': 'Odoo Scholl Lesson 4.0 - Hr Hospital',
 
     'author': "Volodymyr",
     'website': "https://odoo.school/",

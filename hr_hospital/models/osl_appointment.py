@@ -2,6 +2,7 @@ import logging
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError
+from odoo.tools import date_utils
 
 from ..constants import APPOINTMENT_STATES, COMPLETED
 
@@ -50,6 +51,11 @@ class OSLAppointment(models.Model):
         comodel_name='osl.hospital.type.disease',
         ondelete='set null',
     )
+
+    # start_calendar_date = fields.Datetime(
+    #     compute= lambda : date_utils.start_of(fields.Datetime.today(), 'month') ,
+    #     store=True,
+    # )
 
     def write(self, vals):
         for rec in self:
