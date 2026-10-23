@@ -2,7 +2,7 @@ import logging
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError
-from odoo.tools import date_utils
+
 
 from ..constants import APPOINTMENT_STATES, COMPLETED
 
@@ -52,10 +52,10 @@ class OSLAppointment(models.Model):
         ondelete='set null',
     )
 
-    # start_calendar_date = fields.Datetime(
-    #     compute= lambda : date_utils.start_of(fields.Datetime.today(), 'month') ,
-    #     store=True,
-    # )
+    count_same_disease = fields.Integer(
+        #stored=False,
+        compute='_compute_count_same_disease'
+    )
 
     def write(self, vals):
         for rec in self:
@@ -115,3 +115,8 @@ class OSLAppointment(models.Model):
             'domain': [("disease_id","=",self.disease_id.id)],
             'target': 'current',
         }
+
+    @api.depends('disease_id')
+    def _compute_count_same_disease(self):
+        for rec in self:
+            rec.count_same_disease = self.env['osl.hospital.appointment'].search_count([('disease_id', '=', self.disease_id),])
