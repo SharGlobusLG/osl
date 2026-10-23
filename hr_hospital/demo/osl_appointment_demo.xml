@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="d31" model="osl.hospital.appointment">
+            <field name="state">scheduled</field>
+            <field name="scheduled_date">2026-07-20 09:30:00</field>
+            <field name="doctor_id" ref="1"/>
+            <field name="patient_id" ref="11"/>
+            <field name="disease_id" ref="21"/>
+        </record>
+        <record id="d32" model="osl.hospital.appointment">
+            <field name="state">scheduled</field>
+            <field name="scheduled_date">2026-07-20 12:30:00</field>
+            <field name="doctor_id" ref="2"/>
+            <field name="patient_id" ref="12"/>
+            <field name="disease_id" ref="22"/>
+        </record>
+        <record id="d33" model="osl.hospital.appointment">
+            <field name="state">cancelled</field>
+            <field name="scheduled_date">2026-07-20 13:30:00</field>
+            <field name="doctor_id" ref="3"/>
+            <field name="patient_id" ref="13"/>
+            <field name="disease_id" ref="23"/>
+        </record>
+        <record id="d34" model="osl.hospital.appointment">
+            <field name="state">cancelled</field>
+            <field name="scheduled_date">2026-08-20 14:30:00</field>
+            <field name="doctor_id" ref="4"/>
+            <field name="patient_id" ref="13"/>
+            <field name="disease_id" ref="21"/>
+        </record>
+        <record id="d35" model="osl.hospital.appointment">
+            <field name="state">completed</field>
+            <field name="scheduled_date">2026-09-20 09:30:00</field>
+            <field name="actual_date">2026-09-21 09:30:00</field>
+            <field name="doctor_id" ref="1"/>
+            <field name="patient_id" ref="11"/>
+            <field name="disease_id" ref="22"/>
+        </record>
+        <record id="d36" model="osl.hospital.appointment">
+            <field name="state">completed</field>
+            <field name="scheduled_date">2026-09-20 09:30:00</field>
+            <field name="actual_date">2026-09-21 10:30:00</field>
+            <field name="doctor_id" ref="2"/>
+            <field name="patient_id" ref="12"/>
+            <field name="disease_id" ref="23"/>
+        </record>
+        <record id="d37" model="osl.hospital.appointment">
+            <field name="state">scheduled</field>
+            <field name="scheduled_date">2026-03-20 09:30:00</field>
+            <field name="doctor_id" ref="1"/>
+            <field name="patient_id" ref="11"/>
+            <field name="disease_id" ref="21"/>
+        </record>
+        <record id="d38" model="osl.hospital.appointment">
+            <field name="state">scheduled</field>
+            <field name="scheduled_date">2026-03-20 12:30:00</field>
+            <field name="doctor_id" ref="2"/>
+            <field name="patient_id" ref="12"/>
+            <field name="disease_id" ref="22"/>
+        </record>
+        <record id="d39" model="osl.hospital.appointment">
+            <field name="state">cancelled</field>
+            <field name="scheduled_date">2026-04-20 13:30:00</field>
+            <field name="doctor_id" ref="3"/>
+            <field name="patient_id" ref="13"/>
+            <field name="disease_id" ref="23"/>
+        </record>
+        <record id="d40" model="osl.hospital.appointment">
+            <field name="state">cancelled</field>
+            <field name="scheduled_date">2026-04-20 14:30:00</field>
+            <field name="doctor_id" ref="4"/>
+            <field name="patient_id" ref="13"/>
+            <field name="disease_id" ref="21"/>
+        </record>
+        <record id="d41" model="osl.hospital.appointment">
+            <field name="state">completed</field>
+            <field name="scheduled_date">2026-05-20 09:30:00</field>
+            <field name="actual_date">2026-05-21 09:30:00</field>
+            <field name="doctor_id" ref="1"/>
+            <field name="patient_id" ref="11"/>
+            <field name="disease_id" ref="22"/>
+        </record>
+        <record id="d42" model="osl.hospital.appointment">
+            <field name="state">completed</field>
+            <field name="scheduled_date">2026-06-20 09:30:00</field>
+            <field name="actual_date">2026-06-21 10:30:00</field>
+            <field name="doctor_id" ref="2"/>
+            <field name="patient_id" ref="12"/>
+            <field name="disease_id" ref="23"/>
+        </record>
+    </data>
+</odoo>
