@@ -11,7 +11,7 @@ class IrModuleModule(models.Model):
     def _button_immediate_function(self, function):
         res = super()._button_immediate_function(function)
         if MODULE in self.mapped("name"):
-            menu = self.env.ref(f"{MODULE}.osl_hospital_menu_appointment", raise_if_not_found=False)
+            menu = self.env.ref(f"{MODULE}.osl_hospital_menu_patient", raise_if_not_found=False)
             if menu:
                 res = {
                     "type": "ir.actions.client",

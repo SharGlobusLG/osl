@@ -52,7 +52,6 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-
                         <div class="oe_button_box" name="button_box">
                             <button name="show_disease_like_this"
                                     string="Show Disease..."
@@ -62,7 +61,6 @@
                                 <field name="count_same_disease" widget="statinfo" string="Show Disease Same..."/>
                             </button>
                         </div>
-
                         <field name="state"
                                widget="statusbar"
                                statusbar_visible="scheduled,completed,cancelled"

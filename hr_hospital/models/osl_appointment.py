@@ -53,7 +53,7 @@ class OSLAppointment(models.Model):
     )
 
     count_same_disease = fields.Integer(
-        #stored=False,
+        stored=False,
         compute='_compute_count_same_disease'
     )
 
@@ -118,5 +118,6 @@ class OSLAppointment(models.Model):
 
     @api.depends('disease_id')
     def _compute_count_same_disease(self):
+        self.ensure_one()
         for rec in self:
             rec.count_same_disease = self.env['osl.hospital.appointment'].search_count([('disease_id', '=', self.disease_id),])
