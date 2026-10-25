@@ -20,6 +20,18 @@ class OSLDoctorCategory(models.Model):
         copy=False,
     )
 
+    is_doc = fields.Boolean(
+        string='Is Doc',
+        default=False,
+        copy=False,
+    )
+
+    is_doc_high = fields.Boolean(
+        string='Is Doc High category',
+        default=False,
+        copy=False,
+    )
+
     doctor_ids = fields.One2many(
         comodel_name='osl.hospital.doctor',
         inverse_name='doctor_category_id',

@@ -36,6 +36,12 @@ class OSLDoctor(models.Model):
         copy=False,
     )
 
+    intern_of_id = fields.One2many(
+        comodel_name='osl.hospital.doctor',
+        inverse_name='mentor',
+        string='Intern of',
+    )
+
     @api.depends('doctor_category_id')
     def _compute_is_intern_mentor(self):
         '''Ознака того, що кваліфікація є Інтерн, міститься в самій таблиці "osl.hospital.doctor.category"

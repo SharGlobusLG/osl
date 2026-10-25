@@ -4,22 +4,52 @@
 
         <record id="1" model="osl.hospital.doctor">
             <field name="name">Dr. House M.D.</field>
+            <field name="birth_date">1975-04-20</field>
             <field name="description">Doctor House M.D.</field>
+            <field name="doctor_category_id" ref="doctor_category_3"/>
+            <field name="gender">male</field>
         </record>
 
         <record id="2" model="osl.hospital.doctor">
             <field name="name">Dr. Wilson</field>
+            <field name="birth_date">2000-04-20</field>
             <field name="description">Doctor James Wilson</field>
+            <field name="doctor_category_id" ref="doctor_category_2"/>
+            <field name="gender">male</field>
         </record>
 
         <record id="3" model="osl.hospital.doctor">
             <field name="name">Dr. Cameron</field>
+            <field name="birth_date">2002-04-20</field>
             <field name="description">Doctor Allison Cameron</field>
+            <field name="doctor_category_id" ref="doctor_category_2"/>
+            <field name="gender">female</field>
         </record>
 
         <record id="4" model="osl.hospital.doctor">
             <field name="name">Dr. Chase</field>
+            <field name="birth_date">2003-05-10</field>
             <field name="description">Doctor Robert Chase</field>
+            <field name="doctor_category_id" ref="doctor_category_2"/>
+            <field name="gender">female</field>
+        </record>
+
+        <record id="5" model="osl.hospital.doctor">
+            <field name="name">Dr. Foreman</field>
+            <field name="description">Doctor Eric Foreman</field>
+            <field name="birth_date">1999-09-01</field>
+            <field name="doctor_category_id" ref="doctor_category_1"/>
+            <field name="mentor" ref="1"/>
+            <field name="gender">male</field>
+        </record>
+
+        <record id="6" model="osl.hospital.doctor">
+            <field name="name">Thirteen</field>
+            <field name="birth_date">2002-01-08</field>
+            <field name="description">Doctor Remy Hadley</field>
+            <field name="doctor_category_id" ref="doctor_category_1"/>
+            <field name="mentor" ref="1"/>
+            <field name="gender">female</field>
         </record>
 
     </data>
