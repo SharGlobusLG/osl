@@ -17,7 +17,7 @@
     'version': '19.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','phone_validation'],
+    'depends': ['base','phone_validation','mail'],
 
     # always loaded
     'data': [
@@ -34,7 +34,9 @@
         'wizard/osl_hospotal_set_doctor_wizard_view.xml',
         'wizard/osl_hospital_visit_report_wizard_view.xml',
 
-        'data/osl_doctor_category_data.xml'
+        'data/osl_doctor_category_data.xml',
+        'data/osl_appointment_server_action.xml',
+        'data/osl_hospital_cron.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,4 +1,3 @@
-from pip._internal.models import index
 
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError

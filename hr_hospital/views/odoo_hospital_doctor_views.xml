@@ -46,7 +46,7 @@
                         </group>
                         <notebook>
                             <page string="Intern's list" name="intern_list" invisible="is_intern">
-                                <field name="intern_ids">
+                                <field name="intern_ids" >
                                     <kanban quick_create="False" create="False">
                                         <templates>
                                             <t t-name="card">
@@ -96,6 +96,9 @@
                                type="open"
                                class="dropdown-item">Open
                             </a>
+
+                            <!--Виклик Пітон метод є найбільш гнучким рішенням з усіх.
+                            У майбутньому його простіше розширювати.-->
                             <a role="menuitem"
                                type="object"
                                name="new_appointments"

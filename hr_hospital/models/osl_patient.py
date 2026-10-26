@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import api, fields, models
 
 
 class OSLPatient(models.Model):
@@ -45,7 +45,7 @@ class OSLPatient(models.Model):
             'name': 'Appointments by Patient',
             'res_model': 'osl.hospital.appointment',
             'view_mode': 'list',
-            'domain': [('patient_id','=',self.id)],
+            'domain': [('patient_id', '=', self.id)],
             'target': 'current',
         }
 
@@ -60,8 +60,7 @@ class OSLPatient(models.Model):
             'context': {'default_patient_id': self.id},
         }
 
-
     def _compute_count_appointments(self):
         self.ensure_one()
         for rec in self:
-            rec.count_appointments = self.env['osl.hospital.appointment'].search_count([('patient_id', '=', self.id),])
+            rec.count_appointments = self.env['osl.hospital.appointment'].search_count([('patient_id', '=', self.id)])

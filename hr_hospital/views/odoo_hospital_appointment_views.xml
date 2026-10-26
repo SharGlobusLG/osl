@@ -24,7 +24,11 @@
                     </group>
 
                     <searchpanel>
-                        <field name="disease_id" string="Disease" select="multi" icon="fa-flag" enable_counters="1"/>
+                        <field name="disease_id"
+                               string="Disease"
+                               hierarchize="1"
+                               icon="fa-flag"
+                               enable_counters="1"/>
                     </searchpanel>
                 </search>
             </field>
@@ -81,6 +85,7 @@
                             </group>
                         </group>
                     </sheet>
+                    <chatter/>
                 </form>
             </field>
         </record>

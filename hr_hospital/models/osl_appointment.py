@@ -3,8 +3,7 @@ import logging
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 
-
-from ..constants import APPOINTMENT_STATES, COMPLETED, SCHEDULED
+from ..constants import APPOINTMENT_STATES, COMPLETED, SCHEDULED, CANCELLED
 
 _logger = logging.getLogger(__name__)
 
@@ -13,19 +12,19 @@ APPOINTMENT_DONE = 'Appointment already done'
 class OSLAppointment(models.Model):
     _name = 'osl.hospital.appointment'
     _description = 'Appointment'
-
-    # name = fields.Char()
-    # description = fields.Text()
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     state = fields.Selection(
         selection=APPOINTMENT_STATES,
         string='Статус візиту',
         default=SCHEDULED,
+        tracking=True
     )
 
     scheduled_date = fields.Datetime(
         string='Запланована дата',
-        required=True
+        required=True,
+        tracking=True
     )
 
     actual_date = fields.Datetime(
@@ -35,12 +34,14 @@ class OSLAppointment(models.Model):
     doctor_id = fields.Many2one(
         string='Doctor',
         comodel_name='osl.hospital.doctor',
+        tracking=True
     )
 
     patient_id = fields.Many2one(
         string='Patient',
         comodel_name='osl.hospital.patient',
         required=True,
+        tracking=True
     )
 
     summary = fields.Html(
@@ -113,7 +114,7 @@ class OSLAppointment(models.Model):
             'name': 'Така сама хвороба',
             'res_model': 'osl.hospital.appointment',
             'view_mode': 'list',
-            'domain': [("disease_id","=",self.disease_id.id)],
+            'domain': [("disease_id", "=", self.disease_id.id)],
             'target': 'current',
         }
 
@@ -121,4 +122,16 @@ class OSLAppointment(models.Model):
     def _compute_count_same_disease(self):
         self.ensure_one()
         for rec in self:
-            rec.count_same_disease = self.env['osl.hospital.appointment'].search_count([('disease_id', '=', self.disease_id),])
+            rec.count_same_disease = self.env['osl.hospital.appointment'].search_count([('disease_id', '=', self.disease_id)])
+
+    @api.model
+    def set_appointment_state(self):
+        now = fields.Datetime.now()
+        app_ids = self.search([])
+        for record in app_ids:
+            if record.scheduled_date <= now and record.state == SCHEDULED:
+                record.state=CANCELLED
+
+
+
+
