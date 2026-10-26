@@ -46,8 +46,8 @@
                         </group>
                         <notebook>
                             <page string="Intern's list" name="intern_list" invisible="is_intern">
-                                <field name="intern_of_id">
-                                    <kanban quick_create="False">
+                                <field name="intern_ids">
+                                    <kanban quick_create="False" create="False">
                                         <templates>
                                             <t t-name="card">
                                                 <field name="name" class="fw-bold fs-5"/>
@@ -78,12 +78,7 @@
                         group_edit="False"
                         quick_create="False">
                     <field name="is_intern"/>
-                    <header>
-                        <!--button name="action_add_readers"
-                                type="object"
-                                string="Add readers"
-                                display="always"/-->
-                    </header>
+                    <header></header>
 
                     <templates>
                         <t t-name="card">
@@ -101,18 +96,11 @@
                                type="open"
                                class="dropdown-item">Open
                             </a>
-                        </t>
-                        <t t-name="tooltip">
-                            <ul class="list-unstyled">
-                                <li t-if="record.birth_date.raw_value">
-                                    <t t-out="record.birth_date.value"/>
-                                    <b>Birth date:</b>
-                                </li>
-                                <li t-if="record.gender.raw_value">
-                                    <b>Gender:</b>
-                                    <t t-out="record.gender.value"/>
-                                </li>
-                            </ul>
+                            <a role="menuitem"
+                               type="object"
+                               name="new_appointments"
+                               class="dropdown-item">New Appointment
+                            </a>
                         </t>
                     </templates>
                 </kanban>
@@ -126,7 +114,10 @@
                 <search>
                     <filter name="filter_is_intern"
                             string="Is intern"
-                            domain="[('is_intern', '=', 'true')]"/>
+                            domain="[('is_intern', '=', 'True')]"/>
+                    <filter name="filter_is_mentor"
+                            string="Is mentor"
+                            domain="[('intern_ids', 'any', [])]"/>
                 </search>
             </field>
         </record>

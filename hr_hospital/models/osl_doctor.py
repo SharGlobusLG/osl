@@ -1,3 +1,5 @@
+from pip._internal.models import index
+
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
@@ -29,6 +31,7 @@ class OSLDoctor(models.Model):
     )
 
     mentor = fields.Many2one(
+        index=True,
         comodel_name='osl.hospital.doctor',
         string='Mentor',
         ondelete='restrict',
@@ -36,7 +39,7 @@ class OSLDoctor(models.Model):
         copy=False,
     )
 
-    intern_of_id = fields.One2many(
+    intern_ids = fields.One2many(
         comodel_name='osl.hospital.doctor',
         inverse_name='mentor',
         string='Intern of',
@@ -63,3 +66,14 @@ class OSLDoctor(models.Model):
                 raise ValidationError("Не можна обрати ментором лікаря, який сам є інтерном")
             if record.mentor.id == record.id:
                 raise ValidationError("Не можна обрати ментором себє")
+
+    def new_appointments(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'New Appointment by Patient',
+            'res_model': 'osl.hospital.appointment',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_doctor_id': self.id},
+        }

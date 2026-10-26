@@ -4,7 +4,7 @@ from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
-from ..constants import APPOINTMENT_STATES, COMPLETED
+from ..constants import APPOINTMENT_STATES, COMPLETED, SCHEDULED
 
 _logger = logging.getLogger(__name__)
 
@@ -19,7 +19,8 @@ class OSLAppointment(models.Model):
 
     state = fields.Selection(
         selection=APPOINTMENT_STATES,
-        string='Статус візиту'
+        string='Статус візиту',
+        default=SCHEDULED,
     )
 
     scheduled_date = fields.Datetime(
