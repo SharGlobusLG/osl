@@ -57,7 +57,7 @@ class OSLVisitReportWizard(models.TransientModel):
         if self.only_completed:
             domain.append(('state', '=', COMPLETED))
         if self.disease_ids:
-            domain.append(('disease_id', 'in', self.disease_ids))
+            domain.append(('disease_id', 'in', self.disease_ids.ids))
 
         return {
             'type': 'ir.actions.act_window',
@@ -66,5 +66,5 @@ class OSLVisitReportWizard(models.TransientModel):
             'view_mode': 'list,form',
             'domain': domain,
             'target': 'current',
-            'context': {'group_by':'disease_id'},
+            'context': {'group_by': 'disease_id'},
         }

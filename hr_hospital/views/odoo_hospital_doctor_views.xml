@@ -75,8 +75,7 @@
                         default_group_by="doctor_category_id"
                         group_create="False"
                         group_delete="False"
-                        group_edit="False"
-                        quick_create="False">
+                        group_edit="False">
                     <field name="is_intern"/>
                     <header></header>
 
