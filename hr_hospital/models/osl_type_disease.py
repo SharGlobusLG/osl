@@ -7,7 +7,7 @@ class OSLTypeDisease(models.Model):
     _description = 'Type disease'
     _parent_store = True
     _parent_name = 'parent_id'
-    _rec_name = 'display_name'
+    # _rec_name = 'display_name'
 
     name = fields.Char(
         required=True,
@@ -50,20 +50,20 @@ class OSLTypeDisease(models.Model):
             }
         return {}
 
-    display_name = fields.Char(
-        compute='_compute_display_name',
-        recursive=True,
-        store=True,
-        index=True,
-    )
+    # display_name = fields.Char(
+    #     compute='_compute_display_name',
+    #     recursive=True,
+    #     store=True,
+    #     index=True,
+    # )
 
-    @api.depends('name', 'parent_id.display_name')
-    def _compute_display_name(self):
-        for record in self:
-            if record.parent_id and record.parent_id.display_name:
-                record.display_name = f"{record.parent_id.display_name} / {record.name}"
-            else:
-                record.display_name = record.name or ''
+    # @api.depends('name', 'parent_id.display_name')
+    # def _compute_display_name(self):
+    #     for record in self:
+    #         if record.parent_id and record.parent_id.display_name:
+    #             record.display_name = f"{record.parent_id.display_name} / {record.name}"
+    #         else:
+    #             record.display_name = record.name or ''
 
     def unlink(self):
         for record in self:

@@ -2,20 +2,27 @@
 
     <record id="doctor_category_1" model="osl.hospital.doctor.category">
         <field name="name">Лікар-інтерн</field>
-        <field name="is_intern">True</field>
         <field name="sequence">1</field>
+        <field name="is_intern">True</field>
+        <field name="is_doc">False</field>
+        <field name="is_doc_high">False</field>
     </record>
 
     <record id="doctor_category_2" model="osl.hospital.doctor.category">
         <field name="name">Лікар-спеціаліст</field>
-        <field name="is_intern">False</field>
         <field name="sequence">2</field>
+        <field name="is_intern">False</field>
+        <field name="is_doc">True</field>
+        <field name="is_doc_high">False</field>
+
     </record>
 
     <record id="doctor_category_3" model="osl.hospital.doctor.category">
         <field name="name">Лікар вищої категорії</field>
-        <field name="is_intern">False</field>
         <field name="sequence">3</field>
+        <field name="is_intern">False</field>
+        <field name="is_doc">False</field>
+        <field name="is_doc_high">True</field>
     </record>
 
 </odoo>

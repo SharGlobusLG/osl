@@ -21,7 +21,7 @@ class OSLVisitReportWizard(models.TransientModel):
     date_start = fields.Date(string='Початок періоду')
     date_end = fields.Date(string='Кінець періоду')
     only_completed = fields.Boolean(string='Лише завершені візити')
-    disease_id = fields.Many2one(
+    disease_ids = fields.Many2many(
         comodel_name='osl.hospital.type.disease',
         string='Хвороба',
     )
@@ -56,8 +56,8 @@ class OSLVisitReportWizard(models.TransientModel):
             domain.append(('scheduled_date', '<', datetime.combine(self.date_end + timedelta(days=1), time.min)))
         if self.only_completed:
             domain.append(('state', '=', COMPLETED))
-        if self.disease_id:
-            domain.append(('disease_id', '=', self.disease_id.id))
+        if self.disease_ids:
+            domain.append(('disease_id', 'in', self.disease_ids))
 
         return {
             'type': 'ir.actions.act_window',
@@ -66,4 +66,5 @@ class OSLVisitReportWizard(models.TransientModel):
             'view_mode': 'list,form',
             'domain': domain,
             'target': 'current',
+            'context': {'group_by':'disease_id'},
         }

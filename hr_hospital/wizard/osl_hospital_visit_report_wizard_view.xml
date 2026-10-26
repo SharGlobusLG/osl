@@ -8,7 +8,7 @@
                     <group>
                         <field name="doctor_ids" widget="many2many_tags" options="{'no_create': True}"/>
                         <field name="patient_ids" widget="many2many_tags" options="{'no_create': True}"/>
-                        <field name="disease_id"/>
+                        <field name="disease_ids" widget="many2many_tags" options="{'no_create': True}"/>
                     </group>
                     <group>
                         <field name="date_start"/>
@@ -40,5 +40,6 @@
         <field name="target">new</field>
         <field name="binding_model_id" ref="model_osl_hospital_doctor"/>
         <field name="binding_view_types">list,form</field>
+        <field name="binding_type">report</field>
     </record>
 </odoo>

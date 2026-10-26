@@ -19,15 +19,16 @@
                             string="Cancelled"
                             domain="[('state', '=', 'cancelled')]"/>
                     <separator/>
-                    <!--filter name="filter_scheduled_date"
-                            string="Scheduled Date"
-                            date="scheduled_date"/-->
                     <group>
                         <filter name="state" string="State" context="{'group_by': 'state'}"/>
                     </group>
 
                     <searchpanel>
-                        <field name="disease_id" string="Disease" select="multi" icon="fa-flag" enable_counters="1"/>
+                        <field name="disease_id"
+                               string="Disease"
+                               hierarchize="1"
+                               icon="fa-flag"
+                               enable_counters="1"/>
                     </searchpanel>
                 </search>
             </field>
@@ -55,11 +56,15 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="show_disease_like_this"
-                                type="object"
-                                string="Show Disease Like This"
-                                class="btn-info"
-                                icon="oi-odoo-list"/>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="show_disease_like_this"
+                                    string="Show Disease..."
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-users">
+                                <field name="count_same_disease" widget="statinfo" string="Show Disease Same..."/>
+                            </button>
+                        </div>
                         <field name="state"
                                widget="statusbar"
                                statusbar_visible="scheduled,completed,cancelled"
@@ -80,6 +85,7 @@
                             </group>
                         </group>
                     </sheet>
+                    <chatter/>
                 </form>
             </field>
         </record>

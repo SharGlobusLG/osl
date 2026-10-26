@@ -26,7 +26,7 @@
                 <form>
                     <header></header>
                     <sheet>
-                        <group>
+                        <group col="3">
                             <group>
                                 <field name="name"/>
                                 <field name="description"/>
@@ -44,17 +44,92 @@
                                 <field name="age"/>
                             </group>
                         </group>
+                        <notebook>
+                            <page string="Intern's list" name="intern_list" invisible="is_intern">
+                                <field name="intern_ids" >
+                                    <kanban quick_create="False" create="False">
+                                        <templates>
+                                            <t t-name="card">
+                                                <field name="name" class="fw-bold fs-5"/>
+                                                <field name="birth_date"/>
+                                                <footer>
+                                                    <field name="gender"/>
+                                                </footer>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
+                            </page>
+                        </notebook>
+
                     </sheet>
                 </form>
             </field>
         </record>
 
+        <record id="osl_hospital_doctor_view_kanban" model="ir.ui.view">
+            <field name="name">osl.hospital.doctor.kanban</field>
+            <field name="model">osl.hospital.doctor</field>
+            <field name="arch" type="xml">
+                <kanban sample="1"
+                        default_group_by="doctor_category_id"
+                        group_create="False"
+                        group_delete="False"
+                        group_edit="False"
+                        quick_create="False">
+                    <field name="is_intern"/>
+                    <header></header>
+
+                    <templates>
+                        <t t-name="card">
+                            <field name="name" class="fw-bold fs-5"/>
+                            <field name="birth_date"/>
+                            <footer>
+                                <div t-if="record.is_intern.raw_value">
+                                    <b>Intern</b>
+                                </div>
+                            </footer>
+                        </t>
+
+                        <t t-name="menu">
+                            <a role="menuitem"
+                               type="open"
+                               class="dropdown-item">Open
+                            </a>
+
+                            <!--Виклик Пітон метод є найбільш гнучким рішенням з усіх.
+                            У майбутньому його простіше розширювати.-->
+                            <a role="menuitem"
+                               type="object"
+                               name="new_appointments"
+                               class="dropdown-item">New Appointment
+                            </a>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="osl_hospital_doctor_view_search" model="ir.ui.view">
+            <field name="name">osl.hospital.doctor.search</field>
+            <field name="model">osl.hospital.doctor</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter name="filter_is_intern"
+                            string="Is intern"
+                            domain="[('is_intern', '=', 'True')]"/>
+                    <filter name="filter_is_mentor"
+                            string="Is mentor"
+                            domain="[('intern_ids', 'any', [])]"/>
+                </search>
+            </field>
+        </record>
 
         <record id="action_osl_hospital_doctor_window" model="ir.actions.act_window">
             <field name="name">Doctor</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">osl.hospital.doctor</field>
-            <field name="view_mode">list,form</field>
+            <field name="view_mode">list,form,kanban</field>
         </record>
 
         <menuitem id="osl_hospital_menu_doctor"
