@@ -45,7 +45,6 @@
         'demo/osl_patient_demo.xml',
         'demo/osl_appointment_demo.xml',
         'demo/osl_doctor_history.xml',
-        'demo/osl_type_disease_demo.xml',
     ],
 
     'installable': True,
