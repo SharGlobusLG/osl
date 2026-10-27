@@ -26,7 +26,7 @@ class OSLPatient(models.Model):
     )
 
     count_appointments = fields.Integer(
-        stored=False,
+        store=False,
         compute='_compute_count_appointments'
     )
 

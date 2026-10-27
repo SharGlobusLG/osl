@@ -3,7 +3,7 @@ import logging
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 
-from ..constants import APPOINTMENT_STATES, COMPLETED, SCHEDULED, CANCELLED
+from ..constants import APPOINTMENT_STATES, CANCELLED, COMPLETED, SCHEDULED
 
 _logger = logging.getLogger(__name__)
 
@@ -55,7 +55,7 @@ class OSLAppointment(models.Model):
     )
 
     count_same_disease = fields.Integer(
-        stored=False,
+        store=False,
         compute='_compute_count_same_disease'
     )
 
@@ -127,11 +127,9 @@ class OSLAppointment(models.Model):
     @api.model
     def set_appointment_state(self):
         now = fields.Datetime.now()
-        app_ids = self.search([])
+        app_ids = self.search([
+            ('scheduled_date', '<=', now),
+            ('state', '=', SCHEDULED),
+        ])
         for record in app_ids:
-            if record.scheduled_date <= now and record.state == SCHEDULED:
-                record.state=CANCELLED
-
-
-
-
+            record.state = CANCELLED
