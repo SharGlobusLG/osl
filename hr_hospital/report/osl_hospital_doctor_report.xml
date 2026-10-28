@@ -1,0 +1,53 @@
+<odoo>
+    <record id="osl_hospital_doctor_paperformat" model="report.paperformat">
+        <field name="name">A4 Doctor</field>
+        <!--field name="default" eval="True"/-->
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">60</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_spacing">55</field>
+        <field name="header_line" eval="True"/>
+        <field name="dpi">90</field>
+        <field name="disable_shrinking" eval="True"/>
+    </record>
+
+    <record id="action_report_osl_hospital_doctor" model="ir.actions.report">
+        <field name="name">(OSL) Doctor Report</field>
+        <field name="model">osl.hospital.doctor</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_hospital.report_osl_hospital_doctor</field>
+        <field name="report_file">hr_hospital.report_osl_hospital_doctor</field>
+        <field name="print_report_name">
+            'Doctor report for: %s' % object.name
+        </field>
+        <field name="paperformat_id" ref="hr_hospital.osl_hospital_doctor_paperformat"/>
+        <field name="binding_model_id" ref="model_osl_hospital_doctor"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_osl_hospital_doctor">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="company" t-value="res_company"/>
+                <t t-call="hr_hospital.custom_external_layout">
+                    <div class="page">
+                        <h2 t-field="o.name"/>
+                        <h2 t-field="o.doctor_category_id"/>
+                        <t t-foreach="o.get_appointment_list()" t-as="app">
+                            <t t-out="app.scheduled_date"/>
+                        </t>
+                        <!--h2>Рахунок-фактура <span t-out="o.name"/></h2>
+                        <p>Контрагент: <span t-field="o.partner_id"/></p>
+                        <p>Дата: <span t-field="o.date_order"/></p-->
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
