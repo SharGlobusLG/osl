@@ -106,10 +106,10 @@
                         <t t-foreach="pt_list" t-as="patient">
                             <tr>
                                 <td >
-                                    <p t-field="patient.name" class="tc"/>
+                                    <p t-field="patient.name"/>
                                 </td>
                                 <td>
-                                    <p t-field="patient.phone" class="tc"/>
+                                    <p t-field="patient.phone"/>
                                 </td>
                                 <td>
                                     <p t-field="patient.gender"/>
