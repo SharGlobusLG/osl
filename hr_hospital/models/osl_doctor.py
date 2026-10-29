@@ -84,3 +84,9 @@ class OSLDoctor(models.Model):
         appointment_list = appointment_list.sorted('scheduled_date');
         return appointment_list
 
+    def get_patient_list(self):
+        self.ensure_one()
+        patient_list = self.env['osl.hospital.patient'].search(
+            [('doctor_id', '=', self.id)])
+        return patient_list
+

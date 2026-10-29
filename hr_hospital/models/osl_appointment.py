@@ -1,5 +1,7 @@
 import logging
 
+from gevent.testing import skipWithCExtensions
+
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 
@@ -133,3 +135,11 @@ class OSLAppointment(models.Model):
         ])
         for record in app_ids:
             record.state = CANCELLED
+
+    def get_color_state(self):
+        self.ensure_one()
+        match self.state:
+            case 'scheduled': return 'lightyellow'
+            case 'completed': return 'lightgreen'
+            case 'cancelled': return 'lightpink'
+            case _: return 'gray'

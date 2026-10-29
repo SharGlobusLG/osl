@@ -17,7 +17,7 @@
     'version': '19.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','phone_validation','mail', 'web'],
+    'depends': ['base', 'phone_validation', 'mail', 'web'],
 
     # always loaded
     'data': [
@@ -55,5 +55,18 @@
 
     'images': [
         'static/description/icon.png'
-    ]
+    ],
+
+    'assets': {
+        'web.report_assets_common': [
+            'hr_hospital/static/src/**/*.scss',
+        ],
+        # 'web.assets_common': [
+        #     'hr_hospital/static/src/**/*.scss',
+        # ],
+        # 'web.assets_backend': [
+        #     'hr_hospital/static/src/**/*.scss',
+        # ]
+    },
+
 }

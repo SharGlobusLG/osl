@@ -1,5 +1,4 @@
 <odoo>
-    <!-- external_layout_standard -->
     <template id="custom_external_layout"
               name="Custom Layout"
               inherit_id="web.external_layout_standard"
@@ -24,5 +23,4 @@
             </table>
         </xpath>
     </template>
-
 </odoo>
