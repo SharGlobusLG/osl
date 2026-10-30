@@ -130,6 +130,9 @@
             <t t-foreach="docs" t-as="o">
                 <t t-set="company" t-value="res_company"/>
                 <t t-call="hr_hospital.custom_external_layout">
+                    <!-- Використання стандартного в Odoo класу Page робить код більш читаний та зрозумілим для супроводу.
+                    Можна додати своє перенесення сторінки, але це не стандартне рішення ускладнить розуміння коду.
+                    -->
                     <div class="page">
                         <h5>
                             <table class="table table-sm table-borderless mb-3" style="width:100%">
