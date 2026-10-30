@@ -17,7 +17,7 @@
     'version': '19.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','phone_validation','mail'],
+    'depends': ['base', 'phone_validation', 'mail', 'web'],
 
     # always loaded
     'data': [
@@ -36,7 +36,10 @@
 
         'data/osl_doctor_category_data.xml',
         'data/osl_appointment_server_action.xml',
-        'data/osl_hospital_cron.xml'
+        'data/osl_hospital_cron.xml',
+
+        'report/osl_hospital_custom_external_template.xml',
+        'report/osl_hospital_doctor_report.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
@@ -52,5 +55,18 @@
 
     'images': [
         'static/description/icon.png'
-    ]
+    ],
+
+    'assets': {
+        'web.report_assets_common': [
+            'hr_hospital/static/src/**/*.scss',
+        ],
+        # 'web.assets_common': [
+        #     'hr_hospital/static/src/**/*.scss',
+        # ],
+        # 'web.assets_backend': [
+        #     'hr_hospital/static/src/**/*.scss',
+        # ]
+    },
+
 }

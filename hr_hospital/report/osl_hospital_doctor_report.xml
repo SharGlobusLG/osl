@@ -1,0 +1,161 @@
+<odoo>
+    <record id="osl_hospital_doctor_paperformat" model="report.paperformat">
+        <field name="name">A4 Doctor</field>
+        <!--field name="default" eval="True"/-->
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">50</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_spacing">45</field>
+        <field name="header_line" eval="True"/>
+        <field name="dpi">90</field>
+        <field name="disable_shrinking" eval="True"/>
+    </record>
+
+    <record id="action_report_osl_hospital_doctor" model="ir.actions.report">
+        <field name="name">(OSL) Doctor Report</field>
+        <field name="model">osl.hospital.doctor</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_hospital.report_osl_hospital_doctor</field>
+        <field name="report_file">hr_hospital.report_osl_hospital_doctor</field>
+        <field name="print_report_name">
+            'Doctor report for: %s' % object.name
+        </field>
+        <field name="paperformat_id" ref="hr_hospital.osl_hospital_doctor_paperformat"/>
+        <field name="binding_model_id" ref="model_osl_hospital_doctor"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <template id="report_osl_hospital_doctor_appointments">
+        <div>
+            <table>
+                <caption style="caption-side: top;">Appointments</caption>
+                <thead style="background-color: lightgray;">
+                    <tr>
+                        <th>
+                            <p>Запланована дата</p>
+                        </th>
+                        <th>
+                            <p>Фактична дата</p>
+                        </th>
+                        <th>
+                            <p>Patient</p>
+                        </th>
+                        <th>
+                            <p>Disease</p>
+                        </th>
+                        <th>
+                            <p>State</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.get_appointment_list()" t-as="approw">
+                        <tr t-attf-style="background-color: {{ approw.get_color_state() }}">
+                            <td >
+                                <p t-field="approw.scheduled_date" class="tc"/>
+                            </td>
+                            <td>
+                                <p t-field="approw.actual_date" class="tc"/>
+                            </td>
+                            <td>
+                                <p t-field="approw.patient_id"/>
+                            </td>
+                            <td>
+                                <p t-field="approw.disease_id"/>
+                            </td>
+                            <td>
+                                <p t-field="approw.state"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+
+    <template id="report_osl_hospital_doctor_history">
+        <t t-set="pt_list" t-value="o.get_patient_list()"/>
+        <t t-if="pt_list">
+            <div>
+                <table>
+                    <caption style="caption-side: top;">Doctor's Patient</caption>
+                    <thead style="background-color: lightgray;">
+                        <tr>
+                            <th>
+                                <p>Name</p>
+                            </th>
+                            <th>
+                                <p>Phone</p>
+                            </th>
+                            <th>
+                                <p>Gender</p>
+                            </th>
+                            <th>
+                                <p>Birth date</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="pt_list" t-as="patient">
+                            <tr>
+                                <td >
+                                    <p t-field="patient.name"/>
+                                </td>
+                                <td>
+                                    <p t-field="patient.phone"/>
+                                </td>
+                                <td>
+                                    <p t-field="patient.gender"/>
+                                </td>
+                                <td>
+                                    <p t-field="patient.birth_date"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_osl_hospital_doctor">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="company" t-value="res_company"/>
+                <t t-call="hr_hospital.custom_external_layout">
+                    <!-- Використання стандартного в Odoo класу Page робить код більш читаний та зрозумілим для супроводу.
+                    Можна додати своє перенесення сторінки, але це не стандартне рішення ускладнить розуміння коду.
+                    -->
+                    <div class="page">
+                        <h5>
+                            <table class="table table-sm table-borderless mb-3" style="width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="pe-3"
+                                            style="text-align: left; background-color: lightgray; width: 50%">
+                                            <div t-field="o.name"/>
+                                        </td>
+                                        <td class="pe-3"
+                                            style="text-align: right; background-color: lightgray; width: 50%">
+                                            <div t-field="o.doctor_category_id"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </h5>
+                        <t t-call="hr_hospital.report_osl_hospital_doctor_appointments"/>
+                        <t t-call="hr_hospital.report_osl_hospital_doctor_history"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

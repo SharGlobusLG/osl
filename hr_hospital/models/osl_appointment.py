@@ -122,7 +122,7 @@ class OSLAppointment(models.Model):
     def _compute_count_same_disease(self):
         self.ensure_one()
         for rec in self:
-            rec.count_same_disease = self.env['osl.hospital.appointment'].search_count([('disease_id', '=', self.disease_id)])
+            rec.count_same_disease = self.env['osl.hospital.appointment'].search_count([('disease_id', '=', self.disease_id.id)])
 
     @api.model
     def set_appointment_state(self):
@@ -133,3 +133,15 @@ class OSLAppointment(models.Model):
         ])
         for record in app_ids:
             record.state = CANCELLED
+
+    def get_color_state(self):
+        self.ensure_one()
+        match self.state:
+            case 'scheduled':
+                return 'lightyellow'
+            case 'completed':
+                return 'lightgreen'
+            case 'cancelled':
+                return 'lightpink'
+            case _:
+                return 'gray'

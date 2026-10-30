@@ -44,6 +44,12 @@ class OSLDoctor(models.Model):
         string='Intern of',
     )
 
+    intern_names_html = fields.Html(
+        string='Interns',
+        compute='_compute_intern_names_html',
+        sanitize=False,
+    )
+
     @api.depends('doctor_category_id')
     def _compute_is_intern_mentor(self):
         '''Ознака того, що кваліфікація є Інтерн, міститься в самій таблиці "osl.hospital.doctor.category"
@@ -76,3 +82,22 @@ class OSLDoctor(models.Model):
             'target': 'new',
             'context': {'default_doctor_id': self.id},
         }
+
+    def get_appointment_list(self):
+        self.ensure_one()
+        appointment_list = self.env['osl.hospital.appointment'].search(
+            [('doctor_id', '=', self.id)])
+        return appointment_list.sorted('scheduled_date')
+
+    def get_patient_list(self):
+        self.ensure_one()
+        return self.env['osl.hospital.patient'].search(
+            [('doctor_id', '=', self.id)])
+
+    @api.depends('intern_ids', 'intern_ids.name')
+    def _compute_intern_names_html(self):
+        for doctor in self:
+            doctor.intern_names_html = ''.join(
+                f'<div>{intern.name or ""}</div>'
+                for intern in doctor.intern_ids
+            )
