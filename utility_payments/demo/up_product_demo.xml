@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+        <record id="up_product_product_01" model="product.product">
+            <field name="name">Utility Service 1</field>
+            <field name="categ_id" ref="product.product_category_office"/>
+            <field name="standard_price">1</field>
+            <field name="list_price">1</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="description">Test utility service</field>
+            <field name="default_code">UP_01</field>
+            <field name="type_utility_id" ref="up_tye_utility_10"/>
+        </record>
+        <record id="up_product_product_02" model="product.product">
+            <field name="name">Utility Service 2</field>
+            <field name="categ_id" ref="product.product_category_office"/>
+            <field name="standard_price">1</field>
+            <field name="list_price">1</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="description">Test utility service</field>
+            <field name="default_code">UP_02</field>
+            <field name="type_utility_id" ref="up_tye_utility_20"/>
+        </record>
+        <record id="up_product_product_03" model="product.product">
+            <field name="name">Utility Service 3</field>
+            <field name="categ_id" ref="product.product_category_office"/>
+            <field name="standard_price">1</field>
+            <field name="list_price">1</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="description">Test utility service</field>
+            <field name="default_code">UP_03</field>
+            <field name="type_utility_id" ref="up_tye_utility_30"/>
+        </record>
+        <record id="up_product_product_11" model="product.product">
+            <field name="name">Utility Service 4</field>
+            <field name="categ_id" ref="product.product_category_office"/>
+            <field name="standard_price">1</field>
+            <field name="list_price">1</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="description">Test utility service</field>
+            <field name="default_code">UP_04</field>
+            <field name="type_utility_id" ref="up_tye_utility_40"/>
+        </record>
+        <record id="up_product_product_12" model="product.product">
+            <field name="name">Utility Service 5</field>
+            <field name="categ_id" ref="product.product_category_office"/>
+            <field name="standard_price">1</field>
+            <field name="list_price">1</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="description">Test utility service</field>
+            <field name="default_code">UP_05</field>
+            <field name="type_utility_id" ref="up_tye_utility_50"/>
+        </record>
+        <record id="up_product_product_13" model="product.product">
+            <field name="name">Utility Service 6</field>
+            <field name="categ_id" ref="product.product_category_office"/>
+            <field name="standard_price">1</field>
+            <field name="list_price">1</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="description">Test utility service</field>
+            <field name="default_code">UP_06</field>
+            <field name="type_utility_id" ref="up_tye_utility_60"/>
+        </record>
+
+    </data>
+</odoo>

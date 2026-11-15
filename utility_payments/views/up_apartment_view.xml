@@ -23,6 +23,7 @@
                                 bg_color="text-bg-danger"
                                 invisible="active"/>
                         <group>
+                            <field name="name" invisible="true"/>
                             <field name="name"/>
                             <field name="address"/>
                         </group>

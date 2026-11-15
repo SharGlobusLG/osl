@@ -16,17 +16,48 @@
             <field name="model">up.charge</field>
             <field name="arch" type="xml">
                 <form>
-                    <header></header>
+                    <header>
+                        <button name="action_reload_lines"
+                                type="object"
+                                string="Reload lines"
+                                class="secondary"
+                                confirm="Are you sure Reload lines ?"
+                                invisible="state != 'draft'"
+                        />
+
+                        <button name="action_approve"
+                                type="object"
+                                string="Approve"
+                                class="btn-primary"
+                                confirm="Are you sure Approve ?"
+                                invisible="state != 'approved'"
+                        />
+
+                        <button name="action_reject"
+                                type="object"
+                                string="Reject"
+                                class="secondary"
+                                confirm="Are you sure Reject ?"
+                                invisible="state in ('approved')"
+                        />
+
+                        <!--invisible="show_reload_button != True"-->
+                        <field name="state"
+                               widget="statusbar"
+                               options="{'clickable': '0'}"/>
+                    </header>
+                    <!--  statusbar_visible="draft,confirmed,done" -->
                     <group>
-                        <field name="apartment_id"/>
-                        <field name="period_id"/>
+                        <field name="state" invisible="true"/>
+                        <field name="apartment_id" readonly="state == 'approved'"/>
+                        <field name="period_id" readonly="state == 'approved'"/>
                     </group>
                     <notebook>
                         <page string="Utility list" name="utility_list">
-                            <field name="charge_line_ids">
+                            <field name="charge_line_ids" readonly="state == 'approved'">
                                 <list editable="bottom">
                                     <field name="product_id"/>
-                                    <field name="sum" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                                    <field name="sum" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                                     <field name="currency_id" column_invisible="True"/>
                                 </list>
                             </field>

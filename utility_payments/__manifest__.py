@@ -1,3 +1,4 @@
+
 {
     'name': "Utility Payments",
     'sequence': -16,
@@ -34,7 +35,9 @@ Allows for the recording of utility charges and payments made for utility servic
 
     # only loaded in demonstration mode
     'demo': [
+        'demo/up_product_demo.xml',
         'demo/up_apartment_demo.xml',
+        'demo/up_apartment_utility_demo.xml'
     ],
 
     'installable': True,
