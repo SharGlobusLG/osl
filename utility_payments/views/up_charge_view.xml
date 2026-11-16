@@ -5,6 +5,7 @@
             <field name="model">up.charge</field>
             <field name="arch" type="xml">
                 <list>
+                    <field name="state"/>
                     <field name="apartment_id"/>
                     <field name="period_id"/>
                 </list>
@@ -30,21 +31,20 @@
                                 string="Approve"
                                 class="btn-primary"
                                 confirm="Are you sure Approve ?"
-                                invisible="state != 'approved'"
+                                invisible="state != 'draft'"
                         />
 
                         <button name="action_reject"
                                 type="object"
                                 string="Reject"
-                                class="secondary"
+                                class="btn-warning"
                                 confirm="Are you sure Reject ?"
-                                invisible="state in ('approved')"
+                                invisible="state != 'approved'"
                         />
 
                         <!--invisible="show_reload_button != True"-->
                         <field name="state"
-                               widget="statusbar"
-                               options="{'clickable': '0'}"/>
+                               widget="statusbar"/>
                     </header>
                     <!--  statusbar_visible="draft,confirmed,done" -->
                     <group>

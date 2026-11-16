@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="up_charge_01" model="up.charge">
+            <field name="state">approved</field>
+            <field name="apartment_id" ref="up_apartment_1"/>
+            <field name="period_id" ref="up_period_10"/>
+        </record>
+        <record id="up_charge_02" model="up.charge">
+            <field name="state">approved</field>
+            <field name="apartment_id" ref="up_apartment_2"/>
+            <field name="period_id" ref="up_period_10"/>
+        </record>
+        <record id="up_charge_03" model="up.charge">
+            <field name="state">draft</field>
+            <field name="apartment_id" ref="up_apartment_2"/>
+            <field name="period_id" ref="up_period_10"/>
+        </record>
+
+    </data>
+</odoo>

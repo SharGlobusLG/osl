@@ -1,0 +1,14 @@
+<odoo>
+    <record id="up_period_09" model="up.period">
+        <field name="date" eval="(DateTime.today() - relativedelta(month=9)).replace(day=1)"/>
+    </record>
+    <record id="up_period_10" model="up.period">
+        <field name="date" eval="(DateTime.today() - relativedelta(month=10)).replace(day=1)"/>
+    </record>
+    <record id="up_period_11" model="up.period">
+        <field name="date" eval="(DateTime.today() - relativedelta(month=11)).replace(day=1)"/>
+    </record>
+    <record id="up_period_12" model="up.period">
+        <field name="date" eval="(DateTime.today() - relativedelta(month=12)).replace(day=1)"/>
+    </record>
+</odoo>

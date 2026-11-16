@@ -3,7 +3,7 @@ from odoo import fields, models
 
 class UPChargeLine(models.Model):
     _name = 'up.charge.line'
-    _description = 'Utility Charges'
+    _description = 'Utility Charges Line'
 
     charge_id = fields.Many2one(
         string='Charge',

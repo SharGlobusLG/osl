@@ -1,0 +1,27 @@
+th > p {
+    font-size: small;
+    text-align: center;
+    //margin: 5px;
+    //padding: 5px;
+}
+
+td > p{
+    font-size: x-small;
+    text-align: left;
+    //margin: 5px;
+    //padding: 5px;
+}
+
+table > thead, table > tbody {
+    border: 1px solid black;
+    }
+.scheduled{
+    background-color: lightyellow;
+    }
+.completed{
+    background-color: lightgreen;
+    }
+.cancelled{
+    background-color: lightpink;
+    }
+

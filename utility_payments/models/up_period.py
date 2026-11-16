@@ -31,7 +31,7 @@ class UPApartmentUtility(models.Model):
 
     sql_constraints = [
         ('uniq_period_date', 'unique(date)',
-         'Період з такою датою вже існує!'),
+         'Period with same date already exist'),
     ]
 
     @api.depends('date')

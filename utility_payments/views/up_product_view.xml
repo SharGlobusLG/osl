@@ -25,9 +25,14 @@
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
                     <page string="Utility Service" name="utility_service">
-                        <field name="type_utility_id" string="Type of Utility"/>
-                        <field name="personal_account"/>
-                        <field name="provider_id"/>
+                        <group col="1">
+                            <field name="type_utility_id" string="Type of Utility"/>
+                            <!--label for="type_utility_id" string="Type of Utility"/-->
+                            <field name="personal_account"/>
+                            <!--label for="personal_account" string="Personal Account"/-->
+                            <field name="provider_id"/>
+                            <!--label for="provider_id" string="Provider"/-->
+                        </group>
                     </page>
                 </xpath>
             </field>
