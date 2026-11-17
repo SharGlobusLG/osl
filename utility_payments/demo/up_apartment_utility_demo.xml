@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <record id="up_apartment_utulity_11" model="up.apartment.utility">
+            <field name="apartment_id" ref="up_apartment_1" />
+            <field name="product_id" ref="up_product_product_01" />
+            <field name="calc_type">fixed</field>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="fixed_sum">0.5</field>
+        </record>
+        <record id="up_apartment_utulity_12" model="up.apartment.utility">
+            <field name="apartment_id" ref="up_apartment_1" />
+            <field name="product_id" ref="up_product_product_02" />
+            <field name="calc_type">fixed</field>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="fixed_sum">1.0</field>
+        </record>
+        <record id="up_apartment_utulity_13" model="up.apartment.utility">
+            <field name="apartment_id" ref="up_apartment_1" />
+            <field name="product_id" ref="up_product_product_03" />
+            <field name="calc_type">fixed</field>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="fixed_sum">1.5</field>
+        </record>
+
+        <record id="up_apartment_utulity_21" model="up.apartment.utility">
+            <field name="apartment_id" ref="up_apartment_2" />
+            <field name="product_id" ref="up_product_product_11" />
+            <field name="calc_type">fixed</field>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="fixed_sum">2.0</field>
+        </record>
+        <record id="up_apartment_utulity_22" model="up.apartment.utility">
+            <field name="apartment_id" ref="up_apartment_2" />
+            <field name="product_id" ref="up_product_product_12" />
+            <field name="calc_type">fixed</field>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="fixed_sum">2.5</field>
+        </record>
+        <record id="up_apartment_utulity_23" model="up.apartment.utility">
+            <field name="apartment_id" ref="up_apartment_2" />
+            <field name="product_id" ref="up_product_product_13" />
+            <field name="calc_type">fixed</field>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="fixed_sum">3.5</field>
+        </record>
+    </data>
+</odoo>

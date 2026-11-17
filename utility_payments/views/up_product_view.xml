@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="up_product_list">
+            <field name="name">up.product.list ()</field>
+            <field name="model">product.product</field>
+            <field name="priority">1</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="product.product_product_tree_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field" position="before">
+                        <field name="type_utility_id" />
+                        <field name="personal_account" />
+                        <field name="provider_id" />
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="up_product_form">
+            <field name="name">up.product.form ()</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="mode">primary</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Utility Service" name="utility_service">
+                        <group col="1">
+                            <field name="type_utility_id" string="Type of Utility"/>
+                            <!--label for="type_utility_id" string="Type of Utility"/-->
+                            <field name="personal_account"/>
+                            <!--label for="personal_account" string="Personal Account"/-->
+                            <field name="provider_id"/>
+                            <!--label for="provider_id" string="Provider"/-->
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="up_product_action_window">
+            <field name="name">Product</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="ut_product_menu_item"
+                  name="Product"
+                  parent="up_general_data_menu"
+                  action="up_product_action_window"
+                  sequence="30"/>
+
+    </data>
+</odoo>

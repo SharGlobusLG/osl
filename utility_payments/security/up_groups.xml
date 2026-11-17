@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_groups_privilege_up" model="res.groups.privilege">
+        <field name="name">(UP) Utility Payment Privilege</field>
+        <field name="sequence">50</field>
+        <field name="category_id" ref="base.module_category_customizations"/>
+    </record>
+
+    <record id="up_group_user" model="res.groups">
+        <field name="name">(UP) User</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_up"/>
+        <field name="implied_ids" eval="[Command.link(ref('base.group_user')),]"/>
+        <field name="comment">Only view his apartment</field>
+    </record>
+
+
+    <record id="up_group_administrator" model="res.groups">
+        <field name="name">(UP) Administrator</field>
+        <field name="sequence">50</field>
+        <field name="privilege_id" ref="res_groups_privilege_up"/>
+        <field name="implied_ids" eval="[
+            Command.link(ref('up_group_user')),
+        ]"/>
+        <field name="user_ids" eval="[
+            Command.link(ref('base.user_root')),
+            Command.link(ref('base.user_admin')),
+        ]"/>
+        <field name="comment">Full access</field>
+    </record>
+</odoo>

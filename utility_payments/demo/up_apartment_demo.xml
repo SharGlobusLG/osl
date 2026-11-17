@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="up_apartment_1" model="up.apartment">
+            <field name="name">Apartment ABC</field>
+            <field name="address">City 1, Street 1 </field>
+            <field name="user_id" ref="up_user"/>
+            <field name="active" eval="True" />
+        </record>
+        <record id="up_apartment_2" model="up.apartment">
+            <field name="name">Apartment ASD</field>
+            <field name="address">City 2, Street 2 </field>
+            <field name="active" eval="True" />
+        </record>
+        <record id="up_apartment_3" model="up.apartment">
+            <field name="name">Apartment XYZ</field>
+            <field name="address">City 3, Street 3 </field>
+            <field name="active" eval="False" />
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="up_payment_01" model="up.payment">
+            <field name="state">approved</field>
+            <field name="apartment_id" ref="up_apartment_1"/>
+        </record>
+        <record id="up_payment_02" model="up.payment">
+            <field name="state">approved</field>
+            <field name="apartment_id" ref="up_apartment_2"/>
+        </record>
+        <record id="up_payment_03" model="up.payment">
+            <field name="state">draft</field>
+            <field name="apartment_id" ref="up_apartment_2"/>
+        </record>
+    </data>
+</odoo>

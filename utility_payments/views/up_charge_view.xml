@@ -1,0 +1,185 @@
+<odoo>
+    <data>
+
+        <record id="up_charge_view_search" model="ir.ui.view">
+            <field name="name">up.charge.search</field>
+            <field name="model">up.charge</field>
+            <field name="arch" type="xml">
+                <search string="Charges">
+
+                    <field name="period_id" string="Period"/>
+
+                    <filter name="state_draft"
+                            string="Draft"
+                            domain="[('state', '=', 'draft')]"/>
+                    <filter name="filter_borrowed"
+                            string="Approved"
+                            domain="[('state', '=', 'approved')]"/>
+                    <filter name="filter_paid"
+                            string="Paid"
+                            domain="[('state', '=', 'paid')]"/>
+                    <separator/>
+
+                    <group>
+                        <filter name="state" string="State" context="{'group_by': 'state'}"/>
+                    </group>
+
+                    <searchpanel>
+                        <field name="apartment_id"
+                               string="Apartment"
+                               icon="fa-flag"
+                               enable_counters="1"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="up_charge_list">
+            <field name="name">up.charge.list ()</field>
+            <field name="model">up.charge</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="state"/>
+                    <field name="apartment_id"/>
+                    <field name="period_id"/>
+                    <field name="total_sum"/>
+                </list>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="up_charge_form">
+            <field name="name">up.charge.form ()</field>
+            <field name="model">up.charge</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_reload_lines"
+                                type="object"
+                                string="Reload lines"
+                                class="secondary"
+                                confirm="Are you sure Reload lines ?"
+                                invisible="state != 'draft'"
+                        />
+
+                        <button name="action_approve"
+                                type="object"
+                                string="Approve"
+                                class="btn-primary"
+                                confirm="Are you sure Approve ?"
+                                invisible="state not in  ('draft','paid')"
+                        />
+
+                        <button name="action_reject"
+                                type="object"
+                                string="Reject"
+                                class="btn-warning"
+                                confirm="Are you sure Reject ?"
+                                invisible="state != 'approved' or state == 'paid'"
+                        />
+
+                        <!--invisible="show_reload_button != True"-->
+                        <field name="state"
+                               widget="statusbar"/>
+                    </header>
+                    <!--  statusbar_visible="draft,confirmed,done" -->
+                    <group>
+                        <field name="state" invisible="true"/>
+                        <field name="apartment_id" readonly="state == 'approved'"/>
+                        <field name="period_id" readonly="state == 'approved'"/>
+                    </group>
+                    <notebook>
+                        <page string="Utility list" name="utility_list">
+                            <field name="charge_line_ids" readonly="state == 'approved'">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="product_id"/>
+                                    <field name="type_utility_id"/>
+                                    <field name="personal_account"/>
+                                    <field name="provider_id"/>
+                                    <field name="sum" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="up_charge_view_kanban" model="ir.ui.view">
+            <field name="name">up.charge.kanban</field>
+            <field name="model">up.charge</field>
+            <field name="priority">50</field>
+            <field name="arch" type="xml">
+                <kanban sample="1"
+                        default_group_by="state"
+                        records_draggable="false"
+                        group_create="False"
+                        group_delete="False"
+                        group_edit="False">
+
+                    <header></header>
+
+                    <templates>
+                        <t t-name="card">
+                            <div class="oe_kanban_card">
+                                <div>
+                                    <strong>
+                                        <field name="apartment_id"/>
+                                    </strong>
+                                </div>
+
+                                <div class="mt-2">
+                                    Sum:
+                                    <field name="total_sum"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="up_charge_view_graph" model="ir.ui.view">
+            <field name="name">up.charge.graph</field>
+            <field name="model">up.charge</field>
+            <field name="arch" type="xml">
+                <graph string="Charge by Month"
+                       type="bar"
+                       stacked="1"
+                       sample="1">
+                    <field name="date" interval="month"/>
+                    <field name="apartment_id"/>
+                    <field name="total_sum" type="measure" string="Total sum"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="up_charge_view_pivot" model="ir.ui.view">
+            <field name="name">up.charge.pivot</field>
+            <field name="model">up.charge</field>
+            <field name="arch" type="xml">
+                <pivot string="Charge Analysis" sample="1">
+                    <field name="apartment_id" type="row" string="Apartment"/>
+                    <field name="state" type="col" string="State"/>
+                    <field name="total_sum" type="measure"/>
+                    <field name="date"
+                           interval="month"
+                           type="col"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="up_charge_action_window">
+            <field name="name">Charge</field>
+            <field name="res_model">up.charge</field>
+            <field name="view_mode">list,form,search,kanban,graph,pivot</field>
+        </record>
+
+        <menuitem id="ut_charge_menu_item"
+                  name="Charge"
+                  parent="up_payments_menu"
+                  action="up_charge_action_window"
+                  sequence="10"/>
+    </data>
+</odoo>

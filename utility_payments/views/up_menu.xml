@@ -1,0 +1,17 @@
+<odoo>
+  <menuitem id="up_main_menu"
+            web_icon="static/description/utility_payment.png"
+            name="Utility Payment" sequence="50"/>
+
+  <menuitem id="up_general_data_menu"
+            parent="up_main_menu"
+            name="General Data" sequence="100"/>
+
+  <menuitem id="up_payments_menu"
+            parent="up_main_menu"
+            name="Payments" sequence="200"/>
+
+  <menuitem id="up_menu_settings"
+            parent="up_main_menu"
+            name="Settings" sequence="300"/>
+</odoo>

@@ -1,0 +1,114 @@
+<odoo>
+    <record id="up_payment_paperformat" model="report.paperformat">
+        <field name="name">A4 Payment</field>
+        <!--field name="default" eval="True"/-->
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">50</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_spacing">45</field>
+        <field name="header_line" eval="True"/>
+        <field name="dpi">90</field>
+        <field name="disable_shrinking" eval="True"/>
+    </record>
+
+    <record id="action_report_up_payment" model="ir.actions.report">
+        <field name="name">Payment report</field>
+        <field name="model">up.payment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">utility_payments.report_up_payment</field>
+        <field name="report_file">utility_payments.report_up_payment</field>
+        <field name="print_report_name">
+            'Payment report for: %s' % object.apartment_id
+        </field>
+        <field name="paperformat_id" ref="utility_payments.up_payment_paperformat"/>
+        <field name="binding_model_id" ref="model_up_payment"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <template id="report_up_payment_line">
+        <div>
+            <table>
+                <caption style="caption-side: top;">Lines of Payment</caption>
+                <thead style="background-color: lightgray;">
+                    <tr>
+                        <th>
+                            <p>Period</p>
+                        </th>
+                        <th>
+                            <p>Product</p>
+                        </th>
+                        <th>
+                            <p>Type</p>
+                        </th>
+                        <th>
+                            <p>Personal Accaunt</p>
+                        </th>
+                        <th>
+                            <p>Sum</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.payment_line_ids" t-as="row">
+                        <tr>
+                            <td>
+                                <p t-field="row.period_id" class="tc"/>
+                            </td>
+                            <td>
+                                <p t-field="row.product_id" class="tc"/>
+                            </td>
+                            <td>
+                                <p t-field="row.type_utility_id"/>
+                            </td>
+                            <td>
+                                <p t-field="row.personal_account"/>
+                            </td>
+                            <td>
+                                <p t-field="row.sum"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+    <template id="report_up_payment">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="company" t-value="res_company"/>
+                <t t-call="utility_payments.custom_external_layout">
+                    <div class="page">
+                        <h5>
+                            <table class="table table-sm table-borderless mb-3" style="width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="pe-3"
+                                            style="text-align: left; background-color: lightgray; width: 50%">
+                                            <div t-field="o.apartment_id"/>
+                                        </td>
+                                        <td class="pe-3"
+                                            style="text-align: left; background-color: lightgray; width: 50%">
+                                            <div t-field="o.create_date"/>
+                                        </td>
+                                        <td class="pe-3"
+                                            style="text-align: right; background-color: lightgray; width: 50%">
+                                            <div t-field="o.state"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </h5>
+                        <t t-call="utility_payments.report_up_payment_line"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

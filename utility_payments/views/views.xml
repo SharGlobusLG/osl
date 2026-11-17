@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="utility_pyments.list">
+      <field name="name">utility_pyments list</field>
+      <field name="model">utility_pyments.utility_pyments</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </list>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="utility_pyments.action_window">
+      <field name="name">utility_pyments window</field>
+      <field name="res_model">utility_pyments.utility_pyments</field>
+      <field name="view_mode">list,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="utility_pyments.action_server">
+      <field name="name">utility_pyments server</field>
+      <field name="model_id" ref="model_utility_pyments_utility_pyments"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="utility_pyments" id="utility_pyments.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="utility_pyments.menu_1" parent="utility_pyments.menu_root"/>
+    <menuitem name="Menu 2" id="utility_pyments.menu_2" parent="utility_pyments.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="utility_pyments.menu_1_list" parent="utility_pyments.menu_1"
+              action="utility_pyments.action_window"/>
+    <menuitem name="Server to list" id="utility_pyments" parent="utility_pyments.menu_2"
+              action="utility_pyments.action_server"/>
+-->
+  </data>
+</odoo>
