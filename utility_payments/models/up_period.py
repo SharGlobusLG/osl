@@ -7,6 +7,7 @@ from odoo import fields, models, api
 _logger = logging.getLogger(__name__)
 
 class UPApartmentUtility(models.Model):
+    """List of month to account charge-payment"""
     _name = 'up.period'
     _description = 'List of periods (months) for which accruals and payments are recorded'
 
@@ -36,9 +37,9 @@ class UPApartmentUtility(models.Model):
     @api.depends('date')
     def _compute_name(self):
         """Generates a name based on the date"""
-        months = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень',
-                  'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень',
-                  'Листопад', 'Грудень']
+        months = ['January', 'February', 'March', 'April', 'May',
+                  'June', 'July', 'August', 'September', 'October',
+                  'November', 'December']
         for rec in self:
             if rec.date:
                 rec.name = f"{months[rec.date.month - 1]} {rec.date.year}"
@@ -54,6 +55,9 @@ class UPApartmentUtility(models.Model):
 
     @api.model
     def action_open_generate_wizard(self):
+        """ Action for open wizard
+        :return: Action
+        """
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'up.period.generate.wizard',
@@ -77,8 +81,8 @@ class UPApartmentUtility(models.Model):
 
     @api.model
     def _ensure_range(self, date_from, date_to):
-        """Створити всі пропущені періоди в інтервалі [date_from; date_to].
-        Повертає записи, що були створені."""
+        """Create all missing periods within the interval [date_from; date_to].
+        Returns the records that were created."""
         start = self._month_start(date_from)
         end = self._month_start(date_to)
         if start > end:

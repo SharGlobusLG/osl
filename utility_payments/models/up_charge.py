@@ -11,6 +11,7 @@ class UPCharge(models.Model):
         selection=[
             ('draft', 'Draft'),
             ('approved', 'Approved'),
+            ('paid', 'Paid'),
         ],
         default='draft',
     )
@@ -27,22 +28,33 @@ class UPCharge(models.Model):
         required=True,
     )
 
+    date = fields.Date(
+        string='Date',
+        compute='_compute_total_sum',
+        store=True,
+    )
+    @api.depends('period_id.sum')
+    def _compute_total_sum(self):
+        for record in self:
+            record.date = record.period_id.date
+
     charge_line_ids = fields.One2many(
         comodel_name='up.charge.line',
         inverse_name='charge_id',
         string='Charge lines',
     )
 
-    show_reload_button = fields.Boolean(
-        string='Show reload button',
-        default=False,
-        store=False,
+    total_sum = fields.Float(
+        string='Total',
+        compute='_compute_total_sum',
+        store=True,
+        #currency_field='currency_id'
     )
 
-    @api.onchange('apartment_id', 'period_id')
-    def _onchange_apartment_period(self):
-        if self.apartment_id and self.period_id and self.state == 'draft':
-            self.show_reload_button = True
+    @api.depends('charge_line_ids.sum')
+    def _compute_total_sum(self):
+        for record in self:
+            record.total_sum = sum(record.charge_line_ids.mapped('sum'))
 
     def action_reload_lines(self):
         for record in self:
@@ -57,7 +69,6 @@ class UPCharge(models.Model):
                 Command.clear(),
                 *[Command.create(vals) for vals in line_vals],
             ]
-            record.show_reload_button = False
 
     @api.model
     def _get_apartment_charge_lines(self,charge_id=None, apartment_id=None, period_id=None):

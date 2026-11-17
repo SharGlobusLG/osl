@@ -1,5 +1,24 @@
 <odoo>
     <data>
+        <record id="up_cl_01" model="up.charge.line">
+            <field name="charge_id" ref="up_charge_10"/>
+            <field name="product_id" ref="up_product_product_01"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">1.5</field>
+        </record>
+        <record id="up_cl_02" model="up.charge.line">
+            <field name="charge_id" ref="up_charge_10"/>
+            <field name="product_id" ref="up_product_product_02"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">2.0</field>
+        </record>
+        <record id="up_cl_03" model="up.charge.line">
+            <field name="charge_id" ref="up_charge_10"/>
+            <field name="product_id" ref="up_product_product_03"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">3.5</field>
+        </record>
+
 
         <record id="up_cl_01" model="up.charge.line">
             <field name="charge_id" ref="up_charge_01"/>

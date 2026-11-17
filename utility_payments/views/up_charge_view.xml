@@ -1,5 +1,39 @@
 <odoo>
     <data>
+
+        <record id="up_charge_view_search" model="ir.ui.view">
+            <field name="name">up.charge.search</field>
+            <field name="model">up.charge</field>
+            <field name="arch" type="xml">
+                <search string="Charges">
+
+                    <field name="period_id" string="Period"/>
+
+                    <filter name="state_draft"
+                            string="Draft"
+                            domain="[('state', '=', 'draft')]"/>
+                    <filter name="filter_borrowed"
+                            string="Approved"
+                            domain="[('state', '=', 'approved')]"/>
+                    <filter name="filter_paid"
+                            string="Paid"
+                            domain="[('state', '=', 'paid')]"/>
+                    <separator/>
+
+                    <group>
+                        <filter name="state" string="State" context="{'group_by': 'state'}"/>
+                    </group>
+
+                    <searchpanel>
+                        <field name="apartment_id"
+                               string="Apartment"
+                               icon="fa-flag"
+                               enable_counters="1"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="up_charge_list">
             <field name="name">up.charge.list ()</field>
             <field name="model">up.charge</field>
@@ -8,6 +42,7 @@
                     <field name="state"/>
                     <field name="apartment_id"/>
                     <field name="period_id"/>
+                    <field name="total_sum"/>
                 </list>
             </field>
         </record>
@@ -31,7 +66,7 @@
                                 string="Approve"
                                 class="btn-primary"
                                 confirm="Are you sure Approve ?"
-                                invisible="state != 'draft'"
+                                invisible="state not in  ('draft','paid')"
                         />
 
                         <button name="action_reject"
@@ -39,7 +74,7 @@
                                 string="Reject"
                                 class="btn-warning"
                                 confirm="Are you sure Reject ?"
-                                invisible="state != 'approved'"
+                                invisible="state != 'approved' or state == 'paid'"
                         />
 
                         <!--invisible="show_reload_button != True"-->
@@ -67,28 +102,75 @@
             </field>
         </record>
 
+        <record id="up_charge_view_kanban" model="ir.ui.view">
+            <field name="name">up.charge.kanban</field>
+            <field name="model">up.charge</field>
+            <field name="priority">50</field>
+            <field name="arch" type="xml">
+                <kanban sample="1"
+                        default_group_by="state"
+                        records_draggable="false"
+                        group_create="False"
+                        group_delete="False"
+                        group_edit="False">
+
+                    <header></header>
+
+                    <templates>
+                        <t t-name="card">
+                            <div class="oe_kanban_card">
+                                <div>
+                                    <strong>
+                                        <field name="apartment_id"/>
+                                    </strong>
+                                </div>
+
+                                <div class="mt-2">
+                                    Sum:
+                                    <field name="total_sum"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="up_charge_view_graph" model="ir.ui.view">
+            <field name="name">up.charge.graph</field>
+            <field name="model">up.charge</field>
+            <field name="arch" type="xml">
+                <graph string="Charge by Month"
+                       type="bar"
+                       stacked="1"
+                       sample="1">
+                    <field name="date" interval="month"/>
+                    <field name="apartment_id"/>
+                    <field name="total_sum" type="measure" string="Total sum"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="up_charge_view_pivot" model="ir.ui.view">
+            <field name="name">up.charge.pivot</field>
+            <field name="model">up.charge</field>
+            <field name="arch" type="xml">
+                <pivot string="Charge Analysis" sample="1">
+                    <field name="apartment_id" type="row" string="Apartment"/>
+                    <field name="state" type="col" string="State"/>
+                    <field name="total_sum" type="measure"/>
+                    <field name="date"
+                           interval="month"
+                           type="col"/>
+                </pivot>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="up_charge_action_window">
             <field name="name">Charge</field>
             <field name="res_model">up.charge</field>
-            <field name="view_mode">list,form</field>
+            <field name="view_mode">list,form,search,kanban,graph,pivot</field>
         </record>
-
-
-        <!-- server action to the one above -->
-        <!--
-            <record model="ir.actions.server" id="utility_pyments.action_server">
-              <field name="name">utility_pyments server</field>
-              <field name="model_id" ref="model_utility_pyments_utility_pyments"/>
-              <field name="state">code</field>
-              <field name="code">
-                action = {
-                  "type": "ir.actions.act_window",
-                  "view_mode": "list,form",
-                  "res_model": model._name,
-                }
-              </field>
-            </record>
-        -->
 
         <menuitem id="ut_charge_menu_item"
                   name="Charge"

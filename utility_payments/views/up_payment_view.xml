@@ -1,5 +1,34 @@
 <odoo>
     <data>
+
+        <record id="up_payment_view_search" model="ir.ui.view">
+            <field name="name">up.payment.search</field>
+            <field name="model">up.payment</field>
+            <field name="arch" type="xml">
+                <search string="Charges">
+
+                    <filter name="state_draft"
+                            string="Draft"
+                            domain="[('state', '=', 'draft')]"/>
+                    <filter name="filter_borrowed"
+                            string="Approved"
+                            domain="[('state', '=', 'approved')]"/>
+                    <separator/>
+
+                    <group>
+                        <filter name="state" string="State" context="{'group_by': 'state'}"/>
+                    </group>
+
+                    <searchpanel>
+                        <field name="apartment_id"
+                               string="Apartment"
+                               icon="fa-flag"
+                               enable_counters="1"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="up_payment_list">
             <field name="name">up.payment.list ()</field>
             <field name="model">up.payment</field>
@@ -8,6 +37,7 @@
                     <field name="state"/>
                     <field name="create_date"/>
                     <field name="apartment_id"/>
+                    <field name="total_sum"/>
                 </list>
             </field>
         </record>
@@ -48,18 +78,19 @@
                         <field name="state" invisible="true"/>
                         <field name="apartment_id" readonly="state == 'approved'"/>
                         <field name="create_date" readonly="true"/>
+
                     </group>
                     <notebook>
                         <page string="Utility list" name="utility_list">
                             <field name="payment_line_ids" readonly="state == 'approved'">
                                 <list editable="bottom">
-                                    <field name="period_id" />
-                                    <field name="product_id" />
-                                    <field name="type_utility_id" />
-                                    <field name="personal_account" />
-                                    <field name="provider_id" />
-                                    <field name="sum" widget="monetary" options="{'currency_field': 'currency_id'}" />
-                                    <field name="currency_id" column_invisible="True" />
+                                    <field name="period_id"/>
+                                    <field name="product_id"/>
+                                    <field name="type_utility_id"/>
+                                    <field name="personal_account"/>
+                                    <field name="provider_id"/>
+                                    <field name="sum" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="currency_id" column_invisible="True"/>
                                 </list>
                             </field>
                         </page>
@@ -68,10 +99,45 @@
             </field>
         </record>
 
+
+        <record id="up_payment_view_kanban" model="ir.ui.view">
+            <field name="name">up.payment.kanban</field>
+            <field name="model">up.payment</field>
+            <field name="priority">50</field>
+            <field name="arch" type="xml">
+                <kanban sample="1"
+                        default_group_by="state"
+                        records_draggable="false"
+                        group_create="False"
+                        group_delete="False"
+                        group_edit="False">
+
+                    <header></header>
+
+                    <templates>
+                        <t t-name="card">
+                            <div class="oe_kanban_card">
+                                <div>
+                                    <strong>
+                                        <field name="apartment_id"/>
+                                    </strong>
+                                </div>
+
+                                <div class="mt-2">
+                                    Sum:
+                                    <field name="total_sum"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="up_payment_action_window">
             <field name="name">Payment</field>
             <field name="res_model">up.payment</field>
-            <field name="view_mode">list,form</field>
+            <field name="view_mode">list,form,search,kanban</field>
         </record>
 
 

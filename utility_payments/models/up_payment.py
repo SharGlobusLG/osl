@@ -27,6 +27,18 @@ class UPPayment(models.Model):
         string='Payment lines',
     )
 
+    total_sum = fields.Float(
+        string='Total',
+        compute='_compute_total_sum',
+        store=True,
+        #currency_field='currency_id'
+    )
+
+    @api.depends('payment_line_ids.sum')
+    def _compute_total_sum(self):
+        for record in self:
+            record.total_sum = sum(record.payment_line_ids.mapped('sum'))
+
     def action_reload_lines(self):
         for record in self:
             if not record.apartment_id and not record.period_id and self.state != 'draft':
