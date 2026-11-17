@@ -2,8 +2,9 @@ from odoo import fields, models
 
 
 class UPApartment(models.Model):
+    """List of apartment"""
     _name = 'up.apartment'
-    _description = 'Apartment'
+    _description = 'List of apartment'
 
     active= fields.Boolean(default=True)
 

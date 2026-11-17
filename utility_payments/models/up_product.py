@@ -2,6 +2,7 @@ from odoo import fields, models
 
 
 class UPProductProduct(models.Model):
+    """Update product product model"""
     _name = 'product.product'
     _inherit = ['product.product']
 

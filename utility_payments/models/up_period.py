@@ -6,6 +6,7 @@ from odoo import fields, models, api
 
 _logger = logging.getLogger(__name__)
 
+
 class UPApartmentUtility(models.Model):
     """List of month to account charge-payment"""
     _name = 'up.period'
@@ -25,6 +26,7 @@ class UPApartmentUtility(models.Model):
 
     @api.onchange('date')
     def _onchange_date(self):
+        """Calculate begin of month"""
         self.ensure_one()
         if self.date:
             self.date = self._month_start(self.date)
@@ -37,9 +39,20 @@ class UPApartmentUtility(models.Model):
     @api.depends('date')
     def _compute_name(self):
         """Generates a name based on the date"""
-        months = ['January', 'February', 'March', 'April', 'May',
-                  'June', 'July', 'August', 'September', 'October',
-                  'November', 'December']
+        months = [self.env._('January'),
+                  self.env._('February'),
+                  self.env._('March'),
+                  self.env._('April'),
+                  self.env._('May'),
+                  self.env._('June'),
+                  self.env._('July'),
+                  self.env._('August'),
+                  self.env._('September'),
+                  self.env._('October'),
+                  self.env._('November'),
+                  self.env._('December'),
+                  self.env._('December'),
+                  ]
         for rec in self:
             if rec.date:
                 rec.name = f"{months[rec.date.month - 1]} {rec.date.year}"

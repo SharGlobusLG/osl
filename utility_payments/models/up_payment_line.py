@@ -2,6 +2,7 @@ from odoo import fields, models
 
 
 class UPPaymentLine(models.Model):
+    """List (lines) payments for apartment"""
     _name = 'up.payment.line'
     _description = 'Utility Payment Line'
 

@@ -3,6 +3,7 @@ from odoo.orm.commands import Command
 
 
 class UPPayment(models.Model):
+    """List of payments for each apartment"""
     _name = 'up.payment'
     _description = 'Utility Payment'
 
@@ -36,10 +37,12 @@ class UPPayment(models.Model):
 
     @api.depends('payment_line_ids.sum')
     def _compute_total_sum(self):
+        """Calculate total sum of all lines"""
         for record in self:
             record.total_sum = sum(record.payment_line_ids.mapped('sum'))
 
     def action_reload_lines(self):
+        """Reload lines for selected apartment"""
         for record in self:
             if not record.apartment_id and not record.period_id and self.state != 'draft':
                 continue
@@ -93,9 +96,11 @@ class UPPayment(models.Model):
         return new_lines
 
     def action_approve(self):
+        """Approve payment from form"""
         self.ensure_one()
         self.state = 'approved'
 
     def action_reject(self):
+        """Reject payment from form"""
         self.ensure_one()
         self.state = 'draft'

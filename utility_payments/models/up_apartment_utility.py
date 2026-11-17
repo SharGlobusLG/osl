@@ -2,6 +2,7 @@ from odoo import fields, models
 
 
 class UPApartmentUtility(models.Model):
+    """List (lines) of Utility of each Apartment"""
     _name = 'up.apartment.utility'
     _description = 'List of Utility of each Apartment'
 

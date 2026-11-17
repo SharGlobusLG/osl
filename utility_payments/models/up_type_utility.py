@@ -1,7 +1,8 @@
 from odoo import fields, models
 
 
-class UTATypeUtility(models.Model):
+class UPTypeUtility(models.Model):
+    """Types of utility model"""
     _name = 'up.type.utility'
     _description = 'Apartment'
     _order = 'sequence'

@@ -3,6 +3,7 @@ from odoo.orm.commands import Command
 
 
 class UPCharge(models.Model):
+    """List of charges for each apartment and period"""
     _name = 'up.charge'
     _description = 'Utility Charges'
 
@@ -33,8 +34,10 @@ class UPCharge(models.Model):
         compute='_compute_total_sum',
         store=True,
     )
-    @api.depends('period_id.sum')
-    def _compute_total_sum(self):
+
+    @api.depends('period_id')
+    def _compute_date(self):
+        """Get date from Period"""
         for record in self:
             record.date = record.period_id.date
 
@@ -53,10 +56,12 @@ class UPCharge(models.Model):
 
     @api.depends('charge_line_ids.sum')
     def _compute_total_sum(self):
+        """Calculate total sum of all lines"""
         for record in self:
             record.total_sum = sum(record.charge_line_ids.mapped('sum'))
 
     def action_reload_lines(self):
+        """Reload lines for selected apartment"""
         for record in self:
             if not record.apartment_id and not record.period_id and self.state != 'draft':
                 continue
@@ -91,10 +96,11 @@ class UPCharge(models.Model):
         return new_lines
 
     def action_approve(self):
+        """Approve charge from form"""
         self.ensure_one()
         self.state = 'approved'
 
     def action_reject(self):
+        """Reject charge from form"""
         self.ensure_one()
         self.state = 'draft'
-
