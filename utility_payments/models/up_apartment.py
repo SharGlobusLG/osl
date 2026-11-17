@@ -6,7 +6,7 @@ class UPApartment(models.Model):
     _name = 'up.apartment'
     _description = 'List of apartment'
 
-    active= fields.Boolean(default=True)
+    active = fields.Boolean(default=True)
 
     name = fields.Char(
         string='Name',

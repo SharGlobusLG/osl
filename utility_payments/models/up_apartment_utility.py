@@ -18,7 +18,7 @@ class UPApartmentUtility(models.Model):
         comodel_name='product.product',
         required=True,
         ondelete='restrict',
-        domain=[('type_utility_id','!=',False)],
+        domain=[('type_utility_id', '!=', False)],
     )
 
     type_utility_id = fields.Many2one(
@@ -29,7 +29,7 @@ class UPApartmentUtility(models.Model):
     )
 
     calc_type = fields.Selection(
-        selection=[('fixed','Fixed sum'),('prev','Previous month'),('none','None')],
+        selection=[('fixed', 'Fixed sum'), ('prev', 'Previous month'), ('none', 'None')],
         string='Calculation Type',
         default='fixed',
     )
@@ -44,4 +44,3 @@ class UPApartmentUtility(models.Model):
         string='Fixed sum',
         currency_field='currency_id',
     )
-

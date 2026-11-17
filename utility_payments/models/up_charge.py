@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import api, fields, models
 from odoo.orm.commands import Command
 
 
@@ -51,7 +51,7 @@ class UPCharge(models.Model):
         string='Total',
         compute='_compute_total_sum',
         store=True,
-        #currency_field='currency_id'
+        # currency_field='currency_id'
     )
 
     @api.depends('charge_line_ids.sum')
@@ -67,7 +67,7 @@ class UPCharge(models.Model):
                 continue
 
             # Отримуємо дані для табличної частини
-            line_vals = record._get_apartment_charge_lines( charge_id=record.id,apartment_id= record.apartment_id.id,period_id= record.period_id.id)
+            line_vals = record._get_apartment_charge_lines(charge_id=record.id, apartment_id=record.apartment_id.id, period_id=record.period_id.id)
 
             # Повністю замінюємо табличну частину
             record.charge_line_ids = [
@@ -76,22 +76,22 @@ class UPCharge(models.Model):
             ]
 
     @api.model
-    def _get_apartment_charge_lines(self,charge_id=None, apartment_id=None, period_id=None):
+    def _get_apartment_charge_lines(self, charge_id=None, apartment_id=None, period_id=None):
         """Prepare charge lines for selected apartment."""
         new_lines = []
         if apartment_id and period_id and charge_id:
-            apartment_utility_ids = self.env['up.apartment.utility'].search([('apartment_id',"=",apartment_id)])
+            apartment_utility_ids = self.env['up.apartment.utility'].search([('apartment_id', "=", apartment_id)])
             for apartment_utility_id in apartment_utility_ids:
                 sum = 0
                 if apartment_utility_id.calc_type == 'fixed':
-                    sum = apartment_utility_id.fixed_sum;
+                    sum = apartment_utility_id.fixed_sum
                 else:
-                    sum = 0;
+                    sum = 0
                 new_lines.append({
-                    'charge_id':charge_id,
-                    'product_id':apartment_utility_id.product_id.id,
-                    'currency_id':apartment_utility_id.currency_id.id,
-                    'sum':sum
+                    'charge_id': charge_id,
+                    'product_id': apartment_utility_id.product_id.id,
+                    'currency_id': apartment_utility_id.currency_id.id,
+                    'sum': sum
                 })
         return new_lines
 

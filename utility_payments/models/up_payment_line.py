@@ -25,7 +25,7 @@ class UPPaymentLine(models.Model):
         comodel_name='product.product',
         required=True,
         ondelete='restrict',
-        domain=[('type_utility_id','!=',False)],
+        domain=[('type_utility_id', '!=', False)],
     )
 
     type_utility_id = fields.Many2one(

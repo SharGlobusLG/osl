@@ -19,12 +19,26 @@ class UPChargeLine(models.Model):
         comodel_name='product.product',
         required=True,
         ondelete='restrict',
-        domain=[('type_utility_id','!=',False)],
+        domain=[('type_utility_id', '!=', False)],
     )
 
     type_utility_id = fields.Many2one(
-        string='Utility',
+        string='Type of Utility',
         related='product_id.type_utility_id',
+        store=False,
+        readonly=True,
+    )
+
+    personal_account = fields.Char(
+        string='Personal Account',
+        related='product_id.personal_account',
+        store=False,
+        readonly=True,
+    )
+
+    provider_id = fields.Many2one(
+        string='Provider',
+        related='product_id.provider_id',
         store=False,
         readonly=True,
     )

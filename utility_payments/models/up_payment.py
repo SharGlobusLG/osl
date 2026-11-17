@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import api, fields, models
 from odoo.orm.commands import Command
 
 
@@ -32,7 +32,7 @@ class UPPayment(models.Model):
         string='Total',
         compute='_compute_total_sum',
         store=True,
-        #currency_field='currency_id'
+        # currency_field='currency_id'
     )
 
     @api.depends('payment_line_ids.sum')
@@ -85,8 +85,7 @@ class UPPayment(models.Model):
                 FROM cp
                 GROUP BY payment_id,
                          period_id,
-                         product_id            
-            """
+                         product_id"""
             params = {
                 'apartment_id': apartment_id,
                 'payment_id': payment_id,

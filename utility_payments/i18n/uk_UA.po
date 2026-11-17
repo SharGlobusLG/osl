@@ -1,0 +1,701 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* utility_payments
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-17 15:09+0000\n"
+"PO-Revision-Date: 2026-11-17 15:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: utility_payments
+#: model:ir.actions.report,print_report_name:utility_payments.action_report_up_payment
+msgid ""
+"\n"
+"            'Payment report for: %s' % object.apartment_id\n"
+"        "
+msgstr "\n"
+"            'Звіт по платежах по: %s' % object.apartment_id\n"
+"        "
+
+
+#. module: utility_payments
+#: model:res.groups,name:utility_payments.up_group_administrator
+msgid "(UP) Administrator"
+msgstr "(UP) Адміністратор"
+
+#. module: utility_payments
+#: model:res.groups,name:utility_payments.up_group_user
+msgid "(UP) User"
+msgstr "(UP) Користувач"
+
+#. module: utility_payments
+#: model:res.groups.privilege,name:utility_payments.res_groups_privilege_up
+msgid "(UP) Utility Payment Privilege"
+msgstr "(UP) Привілей щодо оплати комунальних послуг"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.custom_external_layout
+msgid "<strong>City:</strong>"
+msgstr "<strong>Місто:</strong>"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.custom_external_layout
+msgid "<strong>Timestamp:</strong>"
+msgstr "<strong>Часова мітка:</strong>"
+
+#. module: utility_payments
+#: model:ir.model.constraint,message:utility_payments.constraint_up_type_utility_name_unique
+msgid "A Type of Utility with same name already exists."
+msgstr "Тип з такою ж назвою вже існує."
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__active
+#: model:ir.model.fields,field_description:utility_payments.field_up_type_utility__active
+msgid "Active"
+msgstr "Активний"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__address
+msgid "Address"
+msgstr "Адреса"
+
+#. module: utility_payments
+#: model:ir.actions.act_window,name:utility_payments.up_apartment_action_window
+#: model:ir.model,name:utility_payments.model_up_type_utility
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__apartment_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__apartment_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__apartment_id
+#: model:ir.ui.menu,name:utility_payments.ut_apartment_menu_item
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_pivot
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_search
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_view_search
+msgid "Apartment"
+msgstr "Квартира"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__apartment_utility_ids
+msgid "Apartment Utility list"
+msgstr "Перелік комунальних послуг для квартири"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_form
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_form
+msgid "Approve"
+msgstr "Затвердити"
+
+#. module: utility_payments
+#: model:ir.model.fields.selection,name:utility_payments.selection__up_charge__state__approved
+#: model:ir.model.fields.selection,name:utility_payments.selection__up_payment__state__approved
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_search
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_view_search
+msgid "Approved"
+msgstr "Затверджено"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "April"
+msgstr "Квітень"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_apartment_form
+msgid "Archived"
+msgstr "Архівовано"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_form
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_form
+msgid "Are you sure Approve ?"
+msgstr "Ви впевнені, що хочете затвердити?"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_form
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_form
+msgid "Are you sure Reject ?"
+msgstr "Ви впевнені, що хочете відхилити?"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_form
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_form
+msgid "Are you sure Reload lines ?"
+msgstr "Ви впевнені, що хочете перезавантажити рядки?"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "August"
+msgstr "Серпень"
+
+#. module: utility_payments
+#: model:ir.model,name:utility_payments.model_up_period_generate_wizard
+msgid "Auto-filling the list of periods"
+msgstr "Автоматичне заповнення списку періодів"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_period_generate_wizard__begin_date
+msgid "Begin period"
+msgstr "Початок періоду"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__calc_type
+msgid "Calculation Type"
+msgstr "Тип розрахунку"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_generate_period_wizard_form
+msgid "Cancel"
+msgstr "Скасувати"
+
+#. module: utility_payments
+#: model:ir.actions.act_window,name:utility_payments.up_charge_action_window
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__charge_id
+#: model:ir.ui.menu,name:utility_payments.ut_charge_menu_item
+msgid "Charge"
+msgstr "Нарахування"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_pivot
+msgid "Charge Analysis"
+msgstr "Аналіз нарахувань"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_graph
+msgid "Charge by Month"
+msgstr "Нарахування по місяцах"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__charge_line_ids
+msgid "Charge lines"
+msgstr "Рядки Нарахування"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_search
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_view_search
+msgid "Charges"
+msgstr "Нарахування"
+
+#. module: utility_payments
+#: model:up.type.utility,name:utility_payments.up_tye_utility_20
+msgid "Cold water"
+msgstr "Холодна вода"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__create_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__create_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__create_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__create_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__create_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__create_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_period__create_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_period_generate_wizard__create_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_type_utility__create_uid
+msgid "Created by"
+msgstr "Створено"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__create_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__create_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__create_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__create_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__create_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__create_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_period__create_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_period_generate_wizard__create_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_type_utility__create_date
+msgid "Created on"
+msgstr "Created on"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__currency_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__currency_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__currency_id
+msgid "Currency"
+msgstr "Валюта"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__date
+#: model:ir.model.fields,field_description:utility_payments.field_up_period__date
+msgid "Date"
+msgstr "Дата"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "December"
+msgstr "Грудень"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_product_product__display_name
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__display_name
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__display_name
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__display_name
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__display_name
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__display_name
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__display_name
+#: model:ir.model.fields,field_description:utility_payments.field_up_period__display_name
+#: model:ir.model.fields,field_description:utility_payments.field_up_period_generate_wizard__display_name
+#: model:ir.model.fields,field_description:utility_payments.field_up_type_utility__display_name
+msgid "Display Name"
+msgstr "Назва для відображення"
+
+#. module: utility_payments
+#: model:ir.model.fields.selection,name:utility_payments.selection__up_charge__state__draft
+#: model:ir.model.fields.selection,name:utility_payments.selection__up_payment__state__draft
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_search
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_view_search
+msgid "Draft"
+msgstr "Чернетка"
+
+#. module: utility_payments
+#: model:up.type.utility,name:utility_payments.up_tye_utility_10
+msgid "Electricity"
+msgstr "Електрика"
+
+#. module: utility_payments
+#: model:up.type.utility,name:utility_payments.up_tye_utility_70
+msgid "Elevator"
+msgstr "Ліфт"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_period_generate_wizard__end_date
+msgid "End period"
+msgstr "Кінець періоду"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "February"
+msgstr "Лютий"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__fixed_sum
+#: model:ir.model.fields.selection,name:utility_payments.selection__up_apartment_utility__calc_type__fixed
+msgid "Fixed sum"
+msgstr "Фіксована сума"
+
+#. module: utility_payments
+#: model:res.groups,comment:utility_payments.up_group_administrator
+msgid "Full access"
+msgstr "Повний доступ"
+
+#. module: utility_payments
+#: model:up.type.utility,name:utility_payments.up_tye_utility_40
+msgid "Gas"
+msgstr "Газ"
+
+#. module: utility_payments
+#: model:ir.ui.menu,name:utility_payments.up_general_data_menu
+msgid "General Data"
+msgstr "Загальні дані"
+
+#. module: utility_payments
+#: model:ir.actions.act_window,name:utility_payments.up_period_generate_wizard_act_window
+#: model:ir.ui.menu,name:utility_payments.up_period_generate_wizard_menu_item
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_generate_period_wizard_form
+msgid "Generate Period List"
+msgstr "Створити список періодів"
+
+#. module: utility_payments
+#: model:up.type.utility,name:utility_payments.up_tye_utility_50
+msgid "Heating"
+msgstr "Опалення"
+
+#. module: utility_payments
+#: model:up.type.utility,name:utility_payments.up_tye_utility_60
+msgid "Homeowners' association"
+msgstr "ОСМД"
+
+#. module: utility_payments
+#: model:up.type.utility,name:utility_payments.up_tye_utility_30
+msgid "Hot water"
+msgstr "Гаряча вода"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_product_product__id
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__id
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__id
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__id
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__id
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__id
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__id
+#: model:ir.model.fields,field_description:utility_payments.field_up_period__id
+#: model:ir.model.fields,field_description:utility_payments.field_up_period_generate_wizard__id
+#: model:ir.model.fields,field_description:utility_payments.field_up_type_utility__id
+msgid "ID"
+msgstr "ID"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "January"
+msgstr "Січень"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "July"
+msgstr "Липень"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "June"
+msgstr ""
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__write_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__write_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__write_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__write_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__write_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__write_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_period__write_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_period_generate_wizard__write_uid
+#: model:ir.model.fields,field_description:utility_payments.field_up_type_utility__write_uid
+msgid "Last Updated by"
+msgstr "Востаннє оновлено:"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__write_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__write_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__write_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__write_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__write_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__write_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_period__write_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_period_generate_wizard__write_date
+#: model:ir.model.fields,field_description:utility_payments.field_up_type_utility__write_date
+msgid "Last Updated on"
+msgstr "Востаннє оновлено:"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.report_up_payment_line
+msgid "Lines of Payment"
+msgstr "Рядки оплати"
+
+#. module: utility_payments
+#: model:ir.model,name:utility_payments.model_up_apartment_utility
+msgid "List of Utility of each Apartment"
+msgstr "Перелік комунальних послуг для кожної квартири"
+
+#. module: utility_payments
+#: model:ir.model,name:utility_payments.model_up_apartment
+msgid "List of apartment"
+msgstr "Список квартир"
+
+#. module: utility_payments
+#: model:ir.model,name:utility_payments.model_up_period
+msgid "List of periods (months) for which accruals and payments are recorded"
+msgstr "Перелік періодів (місяців), за якими відображаються нарахування та виплати"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "March"
+msgstr "Березень"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "May"
+msgstr "Травень"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__name
+#: model:ir.model.fields,field_description:utility_payments.field_up_period__name
+#: model:ir.model.fields,field_description:utility_payments.field_up_type_utility__name
+msgid "Name"
+msgstr "Ім’я"
+
+#. module: utility_payments
+#: model:ir.model.fields.selection,name:utility_payments.selection__up_apartment_utility__calc_type__none
+msgid "None"
+msgstr "Ніщо"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "November"
+msgstr "Листопад"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "October"
+msgstr "Жовтень"
+
+#. module: utility_payments
+#: model:res.groups,comment:utility_payments.up_group_user
+msgid "Only view his apartment"
+msgstr "Тільки перегляд його квартири"
+
+#. module: utility_payments
+#: model:ir.model.fields.selection,name:utility_payments.selection__up_charge__state__paid
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_search
+msgid "Paid"
+msgstr "Оплата"
+
+#. module: utility_payments
+#: model:ir.actions.act_window,name:utility_payments.up_payment_action_window
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__payment_id
+#: model:ir.ui.menu,name:utility_payments.ut_payment_menu_item
+msgid "Payment"
+msgstr "Payment"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__payment_line_ids
+msgid "Payment lines"
+msgstr ""
+
+#. module: utility_payments
+#: model:ir.actions.report,name:utility_payments.action_report_up_payment
+msgid "Payment report"
+msgstr "Рядки платежів"
+
+#. module: utility_payments
+#: model:ir.ui.menu,name:utility_payments.up_payments_menu
+msgid "Payments"
+msgstr "Платежі"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__period_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__period_id
+#: model_terms:ir.ui.view,arch_db:utility_payments.report_up_payment_line
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_search
+msgid "Period"
+msgstr "Період"
+
+#. module: utility_payments
+#: model:ir.actions.act_window,name:utility_payments.up_period_action_window
+msgid "Period list"
+msgstr "Список періодів"
+
+#. module: utility_payments
+#: model:ir.model.constraint,message:utility_payments.constraint_up_period_date_unique
+msgid "Period with same date already exist"
+msgstr "Період із такою ж датою вже існує"
+
+#. module: utility_payments
+#: model:ir.ui.menu,name:utility_payments.up_period_menu_item
+msgid "Period's list"
+msgstr "Список періодів"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.report_up_payment_line
+msgid "Personal Accaunt"
+msgstr "Особистий рахунок"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_product_product__personal_account
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__personal_account
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__personal_account
+msgid "Personal Account"
+msgstr "Особистий рахунок"
+
+#. module: utility_payments
+#: model:ir.model.fields.selection,name:utility_payments.selection__up_apartment_utility__calc_type__prev
+msgid "Previous month"
+msgstr "Попередній місяць"
+
+#. module: utility_payments
+#: model:ir.actions.act_window,name:utility_payments.up_product_action_window
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__product_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__product_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__product_id
+#: model:ir.ui.menu,name:utility_payments.ut_product_menu_item
+#: model_terms:ir.ui.view,arch_db:utility_payments.report_up_payment_line
+msgid "Product"
+msgstr "Номенклатура"
+
+#. module: utility_payments
+#: model:ir.model,name:utility_payments.model_product_product
+msgid "Product Variant"
+msgstr "Варіант товару"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_product_product__provider_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__provider_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__provider_id
+msgid "Provider"
+msgstr "Постачальник"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_form
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_form
+msgid "Reject"
+msgstr "Відхилити"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_form
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_form
+msgid "Reload lines"
+msgstr "Перезавантажити рядки"
+
+#. module: utility_payments
+#. odoo-python
+#: code:addons/utility_payments/models/up_period.py:0
+msgid "September"
+msgstr "Вересень"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_type_utility__sequence
+msgid "Sequence"
+msgstr "Послідовність"
+
+#. module: utility_payments
+#: model:ir.ui.menu,name:utility_payments.up_menu_settings
+msgid "Settings"
+msgstr "Налаштування"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_pivot
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_search
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_view_search
+msgid "State"
+msgstr "Стан"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__state
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__state
+msgid "Status"
+msgstr "Статус"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__sum
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__sum
+#: model_terms:ir.ui.view,arch_db:utility_payments.report_up_payment_line
+msgid "Sum"
+msgstr "Сума"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_kanban
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_view_kanban
+msgid "Sum:"
+msgstr "Сума"
+
+#. module: utility_payments
+#: model_terms:product.template,description:utility_payments.up_product_product_01_product_template
+#: model_terms:product.template,description:utility_payments.up_product_product_02_product_template
+#: model_terms:product.template,description:utility_payments.up_product_product_03_product_template
+#: model_terms:product.template,description:utility_payments.up_product_product_11_product_template
+#: model_terms:product.template,description:utility_payments.up_product_product_12_product_template
+#: model_terms:product.template,description:utility_payments.up_product_product_13_product_template
+msgid "Test utility service"
+msgstr "Тестова комунальна послуга"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge__total_sum
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment__total_sum
+msgid "Total"
+msgstr "Разом"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_view_graph
+msgid "Total sum"
+msgstr "Загальна сума"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.report_up_payment_line
+msgid "Type"
+msgstr "Тип"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_product_product__type_utility_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_charge_line__type_utility_id
+#: model:ir.model.fields,field_description:utility_payments.field_up_payment_line__type_utility_id
+#: model:ir.ui.menu,name:utility_payments.up_type_utility_menu_item
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_product_form
+msgid "Type of Utility"
+msgstr "Тип комунальної послуги"
+
+#. module: utility_payments
+#: model:ir.actions.act_window,name:utility_payments.up_type_utility_action_window
+msgid "Type of utility list"
+msgstr "перелік Типів комунальних послуг"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment__user_id
+msgid "User"
+msgstr "Користувач"
+
+#. module: utility_payments
+#: model:ir.model.fields,field_description:utility_payments.field_up_apartment_utility__type_utility_id
+#: model:ir.module.category,name:utility_payments.module_category_up
+msgid "Utility"
+msgstr "Комунальна послуга"
+
+#. module: utility_payments
+#: model:ir.model,name:utility_payments.model_up_charge
+msgid "Utility Charges"
+msgstr "Плата за комунальні послуги"
+
+#. module: utility_payments
+#: model:ir.model,name:utility_payments.model_up_charge_line
+msgid "Utility Charges Line"
+msgstr "Рядок комунальних платежів"
+
+#. module: utility_payments
+#: model:ir.model,name:utility_payments.model_up_payment
+#: model:ir.ui.menu,name:utility_payments.up_main_menu
+msgid "Utility Payment"
+msgstr "Оплата комунальних послуг"
+
+#. module: utility_payments
+#: model:ir.model,name:utility_payments.model_up_payment_line
+msgid "Utility Payment Line"
+msgstr "Рядок комунальних платежів"
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_product_form
+msgid "Utility Service"
+msgstr "Комунальні послуги"
+
+#. module: utility_payments
+#: model:product.template,name:utility_payments.up_product_product_01_product_template
+msgid "Utility Service 1"
+msgstr "Комунальна послуга 1"
+
+#. module: utility_payments
+#: model:product.template,name:utility_payments.up_product_product_02_product_template
+msgid "Utility Service 2"
+msgstr "Комунальна послуга 2"
+
+#. module: utility_payments
+#: model:product.template,name:utility_payments.up_product_product_03_product_template
+msgid "Utility Service 3"
+msgstr "Комунальна послуга 3"
+
+#. module: utility_payments
+#: model:product.template,name:utility_payments.up_product_product_11_product_template
+msgid "Utility Service 4"
+msgstr "Комунальна послуга 4"
+
+#. module: utility_payments
+#: model:product.template,name:utility_payments.up_product_product_12_product_template
+msgid "Комунальна послуга 5"
+msgstr ""
+
+#. module: utility_payments
+#: model:product.template,name:utility_payments.up_product_product_13_product_template
+msgid "Комунальна послуга 6"
+msgstr ""
+
+#. module: utility_payments
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_apartment_form
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_charge_form
+#: model_terms:ir.ui.view,arch_db:utility_payments.up_payment_form
+msgid "Utility list"
+msgstr "Список комунальних послуг"
+
+#. module: utility_payments
+#: model:up.type.utility,name:utility_payments.up_tye_utility_80
+msgid "Waste collection."
+msgstr "Вивіз  сміття."
