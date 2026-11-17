@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="up_user" model="res.users">
+        <field name="name">User</field>
+        <field name="login">user</field>
+        <field name="password">1</field>
+        <field name="group_ids" eval="[Command.set([
+            ref('up_group_user'),
+        ])]"/>
+    </record>
+</odoo>

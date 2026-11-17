@@ -28,11 +28,10 @@ class UPApartmentUtility(models.Model):
         if self.date:
             self.date = self._month_start(self.date)
 
-
-    sql_constraints = [
-        ('uniq_period_date', 'unique(date)',
-         'Period with same date already exist'),
-    ]
+    _date_unique = models.Constraint(
+        definition='UNIQUE(date)',
+        message='Period with same date already exist',
+    )
 
     @api.depends('date')
     def _compute_name(self):

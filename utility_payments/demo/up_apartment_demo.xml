@@ -3,6 +3,7 @@
         <record id="up_apartment_1" model="up.apartment">
             <field name="name">Apartment ABC</field>
             <field name="address">City 1, Street 1 </field>
+            <field name="user_id" ref="up_user"/>
             <field name="active" eval="True" />
         </record>
         <record id="up_apartment_2" model="up.apartment">

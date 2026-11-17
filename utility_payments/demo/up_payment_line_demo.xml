@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <record id="up_pl_01" model="up.payment.line">
+            <field name="payment_id" ref="up_payment_01"/>
+            <field name="period_id" ref="up_period_10"/>
+            <field name="product_id" ref="up_product_product_01"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">1.5</field>
+        </record>
+        <record id="up_pl_02" model="up.payment.line">
+            <field name="payment_id" ref="up_payment_01"/>
+            <field name="period_id" ref="up_period_10"/>
+            <field name="product_id" ref="up_product_product_02"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">2.0</field>
+        </record>
+        <record id="up_pl_03" model="up.payment.line">
+            <field name="payment_id" ref="up_payment_01"/>
+            <field name="period_id" ref="up_period_10"/>
+            <field name="product_id" ref="up_product_product_03"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">3.5</field>
+        </record>
+
+        <record id="up_pl_11" model="up.payment.line">
+            <field name="payment_id" ref="up_payment_02"/>
+            <field name="period_id" ref="up_period_10"/>
+            <field name="product_id" ref="up_product_product_11"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">5.5</field>
+        </record>
+        <record id="up_pl_12" model="up.payment.line">
+            <field name="payment_id" ref="up_payment_02"/>
+            <field name="period_id" ref="up_period_10"/>
+            <field name="product_id" ref="up_product_product_12"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">7.0</field>
+        </record>
+        <record id="up_pl_13" model="up.payment.line">
+            <field name="payment_id" ref="up_payment_02"/>
+            <field name="period_id" ref="up_period_10"/>
+            <field name="product_id" ref="up_product_product_13"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">8.5</field>
+        </record>
+
+        <record id="up_pl_21" model="up.payment.line">
+            <field name="payment_id" ref="up_payment_03"/>
+            <field name="period_id" ref="up_period_10"/>
+            <field name="product_id" ref="up_product_product_11"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">5.5</field>
+        </record>
+        <record id="up_pl_22" model="up.payment.line">
+            <field name="payment_id" ref="up_payment_03"/>
+            <field name="period_id" ref="up_period_10"/>
+            <field name="product_id" ref="up_product_product_12"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">7.0</field>
+        </record>
+        <record id="up_pl_23" model="up.payment.line">
+            <field name="payment_id" ref="up_payment_03"/>
+            <field name="period_id" ref="up_period_10"/>
+            <field name="product_id" ref="up_product_product_13"/>
+            <field name="currency_id" model="res.currency" search="[('iso_numeric', '=', '840')]"/>
+            <field name="sum">8.5</field>
+        </record>
+
+    </data>
+</odoo>

@@ -17,6 +17,11 @@ class UPApartment(models.Model):
         required=True,
     )
 
+    user_id = fields.Many2one(
+        comodel_name='res.users',
+        string='User',
+    )
+
     apartment_utility_ids = fields.One2many(
         string='Apartment Utility list',
         comodel_name='up.apartment.utility',
