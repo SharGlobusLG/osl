@@ -39,7 +39,7 @@
             <field name="model">up.charge</field>
             <field name="arch" type="xml">
                 <list>
-                    <field name="state"/>
+                    <field name="state" widget="badge" readonly="true"/>
                     <field name="apartment_id"/>
                     <field name="period_id"/>
                     <field name="total_sum"/>
@@ -96,8 +96,9 @@
                                     <field name="type_utility_id"/>
                                     <field name="personal_account"/>
                                     <field name="provider_id"/>
-                                    <field name="sum" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="sum" widget="monetary" options="{'currency_field': 'currency_id'}"  sum="Total sum"/>
                                     <field name="currency_id" column_invisible="True"/>
+
                                 </list>
                             </field>
                         </page>
