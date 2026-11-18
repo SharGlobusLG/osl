@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="21" model="osl.hospital.type.disease">
+        <field name="name">Disease of the trunk</field>
+        <field name="description">Disease of the trunk</field>
+    </record>
+    <record id="22" model="osl.hospital.type.disease">
+        <field name="name">Leg disease</field>
+        <field name="description">Leg disease</field>
+        <field name="parent_id" ref="21"/>
+    </record>
+    <record id="23" model="osl.hospital.type.disease">
+        <field name="name">Head disease</field>
+        <field name="description">Head disease</field>
+        <field name="parent_id" ref="21"/>
+    </record>
+    <record id="24" model="osl.hospital.type.disease">
+        <field name="name">Hand ailment</field>
+        <field name="description">Hand ailment</field>
+        <field name="parent_id" ref="21"/>
+    </record>
+    <record id="25" model="osl.hospital.type.disease">
+        <field name="name">Palm disease</field>
+        <field name="description">Palm disease</field>
+        <field name="parent_id" ref="24"/>
+    </record>
+    <record id="26" model="osl.hospital.type.disease">
+        <field name="name">Finger disease</field>
+        <field name="description">Finger disease</field>
+        <field name="parent_id" ref="25"/>
+    </record>
+</odoo>

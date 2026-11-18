@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="osl_user_demo_patient" model="res.users">
+        <field name="name">Patient</field>
+        <field name="login">patient</field>
+        <field name="password">1</field>
+        <field name="group_ids" eval="[Command.set([
+            ref('osl_hospital_group_patient'),
+        ])]"/>
+    </record>
+
+    <record id="osl_user_demo_intern" model="res.users">
+        <field name="name">Intern</field>
+        <field name="login">intern</field>
+        <field name="password">1</field>
+        <field name="group_ids" eval="[Command.set([
+            ref('osl_hospital_group_intern'),
+        ])]"/>
+    </record>
+
+    <record id="osl_user_demo_doctor" model="res.users">
+        <field name="name">Doctor</field>
+        <field name="login">doctor</field>
+        <field name="password">1</field>
+        <field name="group_ids" eval="[Command.set([
+            ref('osl_hospital_group_doctor'),
+        ])]"/>
+    </record>
+
+    <record id="osl_user_demo_manager" model="res.users">
+        <field name="name">Manager</field>
+        <field name="login">manager</field>
+        <field name="password">1</field>
+        <field name="group_ids" eval="[Command.set([
+            ref('osl_hospital_group_manager'),
+        ])]"/>
+    </record>
+</odoo>
