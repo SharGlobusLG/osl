@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_groups_privilege_osl_hospital" model="res.groups.privilege">
+        <field name="name">(OSL) Hospital Privileges</field>
+        <field name="sequence">50</field>
+        <field name="category_id" ref="base.module_category_customizations"/>
+    </record>
+
+    <record id="osl_hospital_group_patient" model="res.groups">
+        <field name="name">(OSL) Patient</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_osl_hospital"/>
+        <field name="implied_ids" eval="[Command.link(ref('base.group_user')),]"/>
+        <!--field name="user_ids" eval="[Command.link(ref('base.public_user')),]"/-->
+        <field name="comment">Only view his appointments</field>
+    </record>
+
+    <record id="osl_hospital_group_intern" model="res.groups">
+        <field name="name">(OSL) Intern</field>
+        <field name="sequence">20</field>
+        <field name="privilege_id" ref="res_groups_privilege_osl_hospital"/>
+        <field name="implied_ids" eval="[
+            Command.link(ref('osl_hospital_group_patient')),
+        ]"/>
+        <field name="comment">Only view and edit his appointments</field>
+    </record>
+
+    <record id="osl_hospital_group_doctor" model="res.groups">
+        <field name="name">(OSL) Doctor</field>
+        <field name="sequence">30</field>
+        <field name="privilege_id" ref="res_groups_privilege_osl_hospital"/>
+        <field name="implied_ids" eval="[
+            Command.link(ref('osl_hospital_group_intern')),
+        ]"/>
+        <field name="comment">Only view and edit his appointments and Interns</field>
+    </record>
+
+    <record id="osl_hospital_group_manager" model="res.groups">
+        <field name="name">(OSL) Manager</field>
+        <field name="sequence">40</field>
+        <field name="privilege_id" ref="res_groups_privilege_osl_hospital"/>
+        <field name="implied_ids" eval="[
+            Command.link(ref('osl_hospital_group_doctor')),
+        ]"/>
+        <field name="comment">All appointments + EDIT.</field>
+    </record>
+
+    <record id="osl_hospital_group_administrator" model="res.groups">
+        <field name="name">(OSL) Administrator</field>
+        <field name="sequence">50</field>
+        <field name="privilege_id" ref="res_groups_privilege_osl_hospital"/>
+        <field name="implied_ids" eval="[
+            Command.link(ref('osl_hospital_group_manager')),
+        ]"/>
+        <field name="user_ids" eval="[
+            Command.link(ref('base.user_root')),
+            Command.link(ref('base.user_admin')),
+        ]"/>
+        <field name="comment">Full access</field>
+    </record>
+</odoo>

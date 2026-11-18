@@ -1,0 +1,14 @@
+<odoo>
+    <record id="osl_hospital_appointment_set_stat_remainder" model="ir.cron">
+        <field name="name">(OSL) Set App State By Cron</field>
+        <field name="model_id" ref="model_osl_hospital_appointment"/>
+        <field name="state">code</field>
+        <field name="code">model.set_appointment_state()</field>
+        <field eval="True" name="active" />
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <!--field name="numbercall">-1</field-->
+        <!--field name="doall" eval="False"/-->
+    </record>
+</odoo>
