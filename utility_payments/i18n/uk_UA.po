@@ -348,7 +348,7 @@ msgstr "Липень"
 #. odoo-python
 #: code:addons/utility_payments/models/up_period.py:0
 msgid "June"
-msgstr ""
+msgstr "Червень"
 
 #. module: utility_payments
 #: model:ir.model.fields,field_description:utility_payments.field_up_apartment__write_uid
@@ -453,7 +453,7 @@ msgstr "Payment"
 #. module: utility_payments
 #: model:ir.model.fields,field_description:utility_payments.field_up_payment__payment_line_ids
 msgid "Payment lines"
-msgstr ""
+msgstr "Рядки платежа"
 
 #. module: utility_payments
 #: model:ir.actions.report,name:utility_payments.action_report_up_payment
