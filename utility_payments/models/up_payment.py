@@ -70,7 +70,8 @@ class UPPayment(models.Model):
                    LEFT JOIN up_charge ON (up_charge.id = cl.charge_id)
                    WHERE up_charge.apartment_id = %(apartment_id)s
                     AND up_charge.state = 'approved'
-                   UNION SELECT pl.period_id AS period_id,
+                   UNION ALL 
+                   SELECT pl.period_id AS period_id,
                                 pl.product_id AS product_id, - SUM AS SUM
                    FROM up_payment_line AS pl
                    LEFT JOIN up_payment ON (up_payment.id = pl.payment_id)
@@ -90,6 +91,7 @@ class UPPayment(models.Model):
                 'apartment_id': apartment_id,
                 'payment_id': payment_id,
             }
+            self.env.flush_all()
             self.env.cr.execute(query, params)
             new_lines = self.env.cr.dictfetchall()
         return new_lines
