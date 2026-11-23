@@ -22,7 +22,7 @@ class OSLPatient(models.Model):
         string='User',
     )
 
-    insurance_policy_number = fields.Char(size=20)
+    insurance_number = fields.Char(size=20)
 
     history_ids = fields.One2many(
         comodel_name='osl.hospital.doctor.history',
