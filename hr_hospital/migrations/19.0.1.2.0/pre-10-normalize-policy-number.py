@@ -4,6 +4,15 @@ import re
 _logger = logging.getLogger(__name__)
 
 def migrate(cr, version):
+    """
+    1. Add insurance_serial
+    2. Copy insurance_number to insurance_serial
+    3. Chanhe type of insurance_number to integer
+    4. Collect all current insurance_serial (witch was insurance_number before)
+    5. Separate char and number to different columns
+
+    The script must be run before Odoo itself deletes the existing column.
+    """
     cr.execute('''
         ALTER TABLE osl_hospital_patient
         ADD COLUMN insurance_serial character varying(20)

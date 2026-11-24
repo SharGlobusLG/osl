@@ -1,5 +1,6 @@
 def migrate(cr, version):
-
+    """Find appointments with min scheduled_date and set this date to patient with same id.
+    The script is executed after the column has been added."""
     cr.execute('''
         with min_date as (
             select 

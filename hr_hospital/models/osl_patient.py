@@ -29,7 +29,6 @@ class OSLPatient(models.Model):
         string='First Visit Date',
     )
 
-
     history_ids = fields.One2many(
         comodel_name='osl.hospital.doctor.history',
         inverse_name='patient_id',
