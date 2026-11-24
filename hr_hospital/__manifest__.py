@@ -1,10 +1,10 @@
 {
-    'name': "HR Hospital ( Lesson 6.0 )",
+    'name': "HR Hospital ( Lesson 7.0 )",
     'sequence': -1000000,
 
-    'summary': 'Odoo Scholl Lesson 6.0 - Hr Hospital',
+    'summary': 'Odoo Scholl Lesson 7.0 - Hr Hospital',
 
-    'description': 'Odoo Scholl Lesson 6.0 - Hr Hospital',
+    'description': 'Odoo Scholl Lesson 7.0 - Hr Hospital',
 
     'author': "Volodymyr",
     'website': "https://odoo.school/",
@@ -14,12 +14,11 @@
     # for the full list
     'license': 'OPL-1',
     'category': 'Human Resources',
-    'version': '19.0.6.3',
+    'version': '19.0.1.3.0',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'phone_validation', 'mail', 'web'],
 
-    # always loaded
     'data': [
         'security/osl_hospital_groups.xml',
         'security/ir.model.access.csv',
@@ -43,7 +42,7 @@
         'report/osl_hospital_custom_external_template.xml',
         'report/osl_hospital_doctor_report.xml'
     ],
-    # only loaded in demonstration mode
+
     'demo': [
         'demo/res_users_demo.xml',
         'demo/osl_type_disease_demo.xml',
