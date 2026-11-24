@@ -9,6 +9,7 @@
                     <field name="name"/>
                     <field name="description"/>
                     <field name="doctor_id"/>
+                    <field name="insurance_serial"/>
                     <field name="insurance_number"/>
                     <field name="blood_type"/>
                     <field name="gender"/>
@@ -52,6 +53,7 @@
                                 <field name="description"/>
                                 <field name="phone" widget="phone"/>
                                 <field name="doctor_id"/>
+                                <field name="insurance_serial"/>
                                 <field name="insurance_number"/>
                                 <field name="user"/>
                             </group>
