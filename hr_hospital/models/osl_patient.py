@@ -25,6 +25,11 @@ class OSLPatient(models.Model):
     insurance_serial = fields.Char(size=20)
     insurance_number = fields.Integer()
 
+    first_visit_date = fields.Date(
+        string='First Visit Date',
+    )
+
+
     history_ids = fields.One2many(
         comodel_name='osl.hospital.doctor.history',
         inverse_name='patient_id',

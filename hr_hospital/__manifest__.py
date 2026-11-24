@@ -14,7 +14,7 @@
     # for the full list
     'license': 'OPL-1',
     'category': 'Human Resources',
-    'version': '19.0.1.2.0',
+    'version': '19.0.1.3.0',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'phone_validation', 'mail', 'web'],
