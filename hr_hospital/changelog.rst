@@ -1,7 +1,6 @@
 Changelog
 =========
 
-
 19.0.1.1.0
 ----------
 * The field `insurance_policy_number` is being renamed to `insurance_number`.
