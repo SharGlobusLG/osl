@@ -72,7 +72,7 @@
         <record model="ir.actions.act_window" id="up_apartment_action_window">
             <field name="name">Apartment</field>
             <field name="res_model">up.apartment</field>
-            <field name="view_mode">list, form, search</field>
+            <field name="view_mode">list,form</field>
         </record>
 
         <menuitem id="ut_apartment_menu_item"

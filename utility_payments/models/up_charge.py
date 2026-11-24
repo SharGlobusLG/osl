@@ -31,7 +31,7 @@ class UPCharge(models.Model):
 
     date = fields.Date(
         string='Date',
-        compute='_compute_total_sum',
+        compute='_compute_date',
         store=True,
     )
 
