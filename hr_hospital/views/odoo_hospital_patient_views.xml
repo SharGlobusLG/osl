@@ -9,7 +9,7 @@
                     <field name="name"/>
                     <field name="description"/>
                     <field name="doctor_id"/>
-                    <field name="insurance_policy_number"/>
+                    <field name="insurance_number"/>
                     <field name="blood_type"/>
                     <field name="gender"/>
                     <field name="birth_date"/>
@@ -52,7 +52,7 @@
                                 <field name="description"/>
                                 <field name="phone" widget="phone"/>
                                 <field name="doctor_id"/>
-                                <field name="insurance_policy_number"/>
+                                <field name="insurance_number"/>
                                 <field name="user"/>
                             </group>
                             <group>
